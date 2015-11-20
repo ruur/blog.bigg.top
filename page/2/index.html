@@ -98,6 +98,8 @@
 				        
 							<li><a href="/categories/备忘">备忘</a></li>
 				        
+							<li><a href="/categories/工具">工具</a></li>
+				        
 							<li><a href="/categories/分享">分享</a></li>
 				        
 						</ul>
@@ -124,7 +126,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/EalsticSearch/" style="font-size: 10px;">EalsticSearch</a> <a href="/tags/ElasticSearch/" style="font-size: 20px;">ElasticSearch</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/书/" style="font-size: 10px;">书</a> <a href="/tags/书签/" style="font-size: 10px;">书签</a> <a href="/tags/图书馆/" style="font-size: 10px;">图书馆</a> <a href="/tags/家乡/" style="font-size: 10px;">家乡</a> <a href="/tags/阅读/" style="font-size: 10px;">阅读</a>
+						<a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/ElasticSearch/" style="font-size: 20px;">ElasticSearch</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/书/" style="font-size: 10px;">书</a> <a href="/tags/书签/" style="font-size: 10px;">书签</a> <a href="/tags/图书馆/" style="font-size: 10px;">图书馆</a> <a href="/tags/家乡/" style="font-size: 10px;">家乡</a> <a href="/tags/阅读/" style="font-size: 10px;">阅读</a>
 					</div>
 				</section>
 				
@@ -183,6 +185,8 @@
 		        
 					<li><a href="/categories/备忘">备忘</a></li>
 		        
+					<li><a href="/categories/工具">工具</a></li>
+		        
 					<li><a href="/categories/分享">分享</a></li>
 		        
 		        <div class="clearfix"></div>
@@ -209,6 +213,207 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-ElasticSearch的更新索引设置" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/20/ElasticSearch的更新索引设置/" class="article-date">
+  	<time datetime="2015-11-20T15:28:49.000Z" itemprop="datePublished">2015-11-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/20/ElasticSearch的更新索引设置/">ElasticSearch的更新索引设置</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="http://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html#indices-update-settings" target="_blank" rel="external">Doc Source(英文原文)</a></p>
+</blockquote>
+<ul>
+<li>实时更改具体的索引级别设置</li>
+<li><p>用<code>/_settings</code>(更新所有的索引)或者<code>{index}/_settings</code>来更新一个或多个索引配置。例如：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "<span class="attribute">index</span>" : <span class="value">&#123;</span><br><span class="line">        "<span class="attribute">number_of_replicas</span>" : <span class="value"><span class="number">4</span></span><br><span class="line">    </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下面将会把当前的副本数改为4，例如（curl）:</p>
+<figure class="highlight scilab"><table><tr><td class="code"><pre><span class="line">curl -XPUT <span class="string">'localhost:9200/my_index/_settings'</span> -d <span class="string">'</span><br><span class="line">&#123;</span><br><span class="line">    "</span>index<span class="string">" : &#123;</span><br><span class="line">        "</span>number_of_replicas<span class="string">" : 4</span><br><span class="line">    &#125;</span><br><span class="line">&#125;'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p><strong>提醒：</strong>当改变副本数量时，索引需要打开。在索引关闭的状态下改变副本的数量会阻止索引再次正确地打开。</p>
+</blockquote>
+<p>以下列出的设置用更新设置的API可以被改变：</p>
+<ul>
+<li><code>index.number_of_replicas</code>   <ul>
+<li>每个分片的副本数量</li>
+</ul>
+</li>
+<li><code>index.auto_expand_replicas (string)</code><ul>
+<li>用短横线分隔下限和上限，或者用<code>all</code>作为上限，用<code>false</code>使该设置失效</li>
+</ul>
+</li>
+<li><code>index.blocks.read_only</code><ul>
+<li>设为<code>true</code>来让索引为只读，设为<code>false</code>来允许写和元数据的改变</li>
+</ul>
+</li>
+<li><code>index.blocks.read</code><ul>
+<li>置为<code>true</code>,对索引禁用读操作</li>
+</ul>
+</li>
+<li><code>index.blocks.write</code><ul>
+<li>置为<code>true</code>,对索引禁用写操作</li>
+</ul>
+</li>
+<li><code>index.blocks.metadata</code><ul>
+<li>置为<code>true</code>,对索引禁用元数据操作</li>
+</ul>
+</li>
+<li><code>index.refresh_interva</code><ul>
+<li>切片的同步刷新间隔</li>
+</ul>
+</li>
+<li><code>index.index_concurrency</code><ul>
+<li>默认置为<code>8</code></li>
+</ul>
+</li>
+<li><code>index.fail_on_merge_failure</code><ul>
+<li>默认置为<code>true</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="大量建索引的用法">大量建索引的用法</h3><ul>
+<li>例如，对于大量的索引，更新设置的API以高性能动态地改变索引，然后转移它到更实时的索引状态。在大量地建索引之前，用以下方法：<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">curl -XPUT localhost:9200/<span class="keyword">test</span>/_settings -<span class="keyword">d</span> '&#123;</span><br><span class="line">    <span class="string">"index"</span> : &#123;</span><br><span class="line">        <span class="string">"refresh_interval"</span> : <span class="string">"-1"</span></span><br><span class="line">    &#125; &#125;'</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>（另一个优化的选项是不加任何副本开始建索引，并在之后添加它们，然而这取决于其使用的具体情况。）</p>
+<ul>
+<li><p>一旦大量建索引完成，就可以更新这些设置了（回到默认的情况，比如：）</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">curl -XPUT localhost:9200/<span class="keyword">test</span>/_settings -<span class="keyword">d</span> '&#123;</span><br><span class="line">    <span class="string">"index"</span> : &#123;</span><br><span class="line">        <span class="string">"refresh_interval"</span> : <span class="string">"1s"</span></span><br><span class="line">    &#125; &#125;'</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>并且，一个优化应该被调用：</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="title">curl</span> -XPOST <span class="string">'http://localhost:9200/test/_optimize?max_num_segments=5'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="更新索引分析">更新索引分析</h3><ul>
+<li>对索引定义新的analyzers也是可能的。但是先关闭索引并在改变之后打开它。</li>
+<li>例如当<code>content</code> analyzer还没有定义<code>myindex</code>，你可以使用以下的命令来添加它：<figure class="highlight scilab"><table><tr><td class="code"><pre><span class="line">curl -XPOST <span class="string">'localhost:9200/myindex/_close'</span></span><br><span class="line"></span><br><span class="line">curl -XPUT <span class="string">'localhost:9200/myindex/_settings'</span> -d <span class="string">'&#123;</span><br><span class="line">  "</span>analysis<span class="string">" : &#123;</span><br><span class="line">    "</span>analyzer<span class="string">":&#123;</span><br><span class="line">      "</span>content<span class="string">":&#123;</span><br><span class="line">        "</span>type<span class="string">":"</span>custom<span class="string">",</span><br><span class="line">        "</span>tokenizer<span class="string">":"</span>whitespace<span class="string">"</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;'</span></span><br><span class="line"></span><br><span class="line">curl -XPOST <span class="string">'localhost:9200/myindex/_open'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/备忘/">备忘</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-MongoDB副本集延迟备份" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/20/MongoDB副本集延迟备份/" class="article-date">
+  	<time datetime="2015-11-20T15:27:00.000Z" itemprop="datePublished">2015-11-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/20/MongoDB副本集延迟备份/">MongoDB副本集延迟备份</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>启动一个replSet副本</li>
+<li>设置延迟配置</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">conf = rs.<span class="function"><span class="title">conf</span><span class="params">()</span></span></span><br><span class="line">conf<span class="class">.members</span>[<span class="number">2</span>]<span class="class">.priority</span> = <span class="number">0</span>   (优先级为<span class="number">0</span>)</span><br><span class="line">conf<span class="class">.members</span>[<span class="number">2</span>]<span class="class">.slaveDelay</span> = <span class="number">86400</span> （延迟复制，单位为秒）</span><br><span class="line">conf<span class="class">.members</span>[<span class="number">2</span>]<span class="class">.hidden</span> = true  (隐藏)</span><br><span class="line">rs.<span class="function"><span class="title">reconfig</span><span class="params">(conf)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果一台机器无法访问另外一个机器起的mongodb, 可能是端口没有开放。</li>
+</ul>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">查询iptables:   sudo iptables -<span class="keyword">nL</span></span><br><span class="line">添加端口：       iptables -A <span class="keyword">INPUT</span> -p tcp --dport 29617 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<ul>
+<li>数据库未正常关闭，重启出现问题，试试这个：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> LC_ALL=<span class="string">"C"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/备忘/">备忘</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-Django安装MySQL问题" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -277,10 +482,10 @@
 
 
   
-    <article id="vim-快捷键及常见问题" class="article article-type-vim" itemscope itemprop="blogPost">
+    <article id="vim-VIM快捷键及常见问题" class="article article-type-vim" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/20/快捷键及常见问题/" class="article-date">
+      <a href="/2015/11/20/VIM快捷键及常见问题/" class="article-date">
   	<time datetime="2015-11-20T12:05:01.000Z" itemprop="datePublished">2015-11-20</time>
 </a>
     </div>
@@ -294,7 +499,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/20/快捷键及常见问题/">快捷键及常见问题</a>
+      <a class="article-title" href="/2015/11/20/VIM快捷键及常见问题/">快捷键及常见问题</a>
     </h1>
   
 
@@ -327,7 +532,7 @@
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/备忘/">备忘</a>
+	<a class="article-category-link" href="/categories/备忘/">备忘</a><a class="article-category-link" href="/categories/备忘/工具/">工具</a>
 	</div>
 
 
@@ -658,67 +863,9 @@
 
 
   
-    <article id="post-家乡的水" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2007/11/20/家乡的水/" class="article-date">
-  	<time datetime="2007-11-20T12:17:47.000Z" itemprop="datePublished">2007-11-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2007/11/20/家乡的水/">家乡的水</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="exporter-version" content="Evernote Mac 6.2 (452688)"><meta name="altitude" content="482.1695861816406"><meta name="author" content="杨珩"><meta name="created" content="2015-11-20 12:59:02 +0000"><meta name="latitude" content="30.54883241227225"><meta name="longitude" content="104.0690499427805"><meta name="source" content="desktop.mac"><meta name="updated" content="2015-11-20 13:00:17 +0000"><title>家乡的水</title></head><body><br><div>      提及家乡，总不免有点儿思念的味道，那正是家乡水的味道。对于一个处在内陆地区的小村庄，是看不到海的，没有海面的辽阔，海水的温存，却时不时能感受到海水的气息，还有水波此起彼伏，阳光洒在上面星星点点的感觉。记得几年前到天津游玩时，第一次看见海，就有一种似曾相识的感觉，那是小时候的我，经常能够感受得到的。</div><br><div><br></div><br><div>      小时候的我，不算很顽皮，却也并不是那种沉默寡言，不逢大事不出门的“小少爷”。我作为一个农家的小毛孩子，上树、下水、钓鱼、玩蛇（当然是水蛇）是常有的事儿，也许是天性对蛇有种厌恶以至畏惧的感觉，所以我也从来不主动去捉蛇、玩蛇，只是万不得已，为的是不逊色，也就经常“勇敢”地捉它来玩。但对于在水中游的水蛇，我是从来都不打扰的，我一直都认为水是一个清且淡的大舞台，以至于对它有种由衷的感情，也许正是这种感情的影响，我对水中的蛇也不再生厌，反倒时常为它婀娜多姿的表演而喝彩。可是一直以来令我十分遗憾的是，我从来都没有在曾养育我们好几代人的水库里寻到它的身影，若是在这个广阔的舞台上表演，那一定别有一番乐趣！</div><br><div><br></div><br><div>      其实，我所提到的那似海非海的，就是那水库，连同一条不宽不窄的水渠，把我们的整个村庄，都圈到了一个椭圆里，而太阳、月亮正如两个日夜交替的焦点，正好映在这清纯的水面上。田野与水库的交界处，是一块很大的空地，长着大片的水草，水草的颜色不是很青，正如天空般淡蓝。幼时的我总会想，也许这水的颜色不是天空映的，就是这水草映的，因为我在游水时，有时把整个身体短时间地沉到水底，不仅感受到了沙石的棱角，还有水草那痒痒的接触。提到游水，那可是我小时候最喜欢的，每逢夏日，本村的，无论老幼，都在太阳刚准备下山时来到这里游水。映着夕阳红彤彤的，不仅是水，还有那一张张淳朴的笑脸。而这游水过后，也可算是洗完了澡，这种洗澡的感受，远非在水龙头前淋浴可比的，在水里游着，心境早已超脱世外，早已通过这水，洗掉了尘世的忧愁与污垢。而在这儿游水的人谈笑的温情，又给这儿的水增添了另一样色彩。我小时候是在一所乡村小学读书，上学和放学的必经之路就是连接着我们村与水库对岸的堤，因此，也就是我最熟悉的地方。走在上面，左右都是广阔的水，丝丝凉风拂过脸颊，远比温和的海风来得静、来得清，还有一种清醇甘甜的感觉，深深吸一口气，这种味道，让全身都能感觉得到，这便是水的味道。我小时候的一个外号，就是由它得来的。在上学时，我总比别人早半个多小时出门，却总比别人迟到，因而就有人叫我“慢乌龟”，这个外号一直伴随着我，直到我离开这所小学后，才被我“强行取缔”。而这段经历，却给我人生划上了难忘的一笔。其实，这也足可见我对这库堤的喜爱程度，只是三四十米长，我却走了不止一小时。站在堤上的我，时常向着水的尽头望去，望得出神，也想了很多。水面上大群的水鸟似箭般冲下水里，接着就冲向蓝天，消失在那水的尽头。我当时挺羡慕她们能够品尝外面的世界，而我，却只能对着这水，向天独叹。也许正是这水，教会了我“奋斗”，给我指引了一条光明的路。因此，我对这水的感情，是一种特殊的感激与思念。</div><br><div><br></div><br><div>      艰苦的求学之路漫长而又无聊，也让我早早地离开了这片土地、这片水。所谓“一方水土养一方人。”我也坚信自己是它的子孙。如今虽久居城市，却总觉得有点烦闷的感觉。我的性格也变得有些孤僻了，心情也没有以前好了。但是前几个月听妈妈说了一件事，竟让我高兴了许久。“围绕着水库，要建设一个生态旅游度假区。”听妈妈这样说。这不禁使我想起童年的一些趣事。水库一年中绝大部分月份是枯水期，而留下来的空地变成了我们的乐园。和我年龄相仿的同伴很有几个，再加上比我大得不是太多的，就足一二十来个。傍晚时分，我们都提前去牵牛，顺便带上那“合资”购置的足球，在这个比几个足球场都要大的空地上来回地踢，那“挥汗如雨”的感觉，是如今的我很难感受得到的。虽然个个都是裸着一双小似香蕉嫩若仁的脚，但踩在石子上隐痛的感觉，早已抛之九霄云外了。况且接下来就是在水库中心洗一个痛快澡，心情愉悦的感觉更是升到了极点。如今，这里要建一个度假区，能够欣赏这美景的人一定很多吧！顺便让外乡人也来感受一下，也正可好好彰显一下它的价值。我离开它已有多年了，对它的感觉已近于朦胧，已很难畅快地勾画出家乡的景致了，这也许是我离它越来越远的缘故吧！    由于要补课，期待已久的暑假也就来得特别迟，长久以来积蓄在我心底的感觉，似快要喷发的火山，也如一汩汩清泉。刚离开学校回家才几天，我就乘上了回老家的汽车，也许,那种期待之情，已提前归属了那片水。</div><br><div><br></div><br><div>      回到这个有大半年没回过的家，首先当然是问候好久不见的奶奶。她是一个把一生都倾注在这块土地的人，大半辈子的经历使她对这块土地异常熟悉，她所倾注的感情也不是我所能比的。我想，对于而今家乡翻天覆地的变化，她一定比我更兴奋，更觉得欣慰。我向奶奶问好过后，首先谈到的并不是“水库改建”的事，而是我回来时看见的那条通往村里的水泥路，我打算用这来切入主题，让我们好好地高兴一次。可奶奶的话却使我有些懵了，她说：“以前这儿是泥巴路，总想有条好路走，可如今路是修了，小偷也来了，前不久就有好几家的牛被偷了。更可气的是，长在田里的稻谷和麦子，一夜就让人连杆带穗给割走喽！”我知道奶奶是一个很乐观的人活到七十多，身体还十分健康，就是乐观奏的效啊！可此时的她脸上却满脸感伤，让我感觉家乡的静彻底被大破了。而当我提及水库时，她的话让我彻底懵了。她说：“建度假区只是表象，办赌场才是真的，听说还是以办校的名义，用的是国家教育经费。”“听说”也许是流言，不可完全相信，但办赌场却非空穴来风，无须寻找证人和证物，来往赌博的人就是最好的明证。也许哪一天那里发生了冲突，那水不仅是傍晚，就是白天，也会有一抹夕阳色彩，是那种永远都不会变淡的色彩。我想，这水的纯也被彻底打破了。然而我还不料，曾经朴实的游水者，竟也会连人带水，托进这烂泥的深渊。也许是我对那蒙昧的水倾注了过多的感情，因此对这些人有了偏见，又或许，是好几年前水的清纯感染了我，自然而然激起了愤怒之情。</div><br><div><br></div><br><div>      站在家门口，我呆呆地极目远望，隐约地可以看到山的身影，听说那就是“峰山”，我想那里一定很繁荣吧！难道它也是通过这种途径繁荣的吗？近处就是这水，这片即将从蒙昧中走出来的水……</div><br><div><br></div><br><div>      不知不觉间，我来到了堤上，习习的凉风依旧吹个不停，浪涛也来得更猛，我举目向四周望去，寻找着我一直以来都想看到的东西——不是那貌似漂亮的幢幢别墅，也不是那移栽过来，貌似高大却似活非活的朽木，而是我小时候看到的那群群水鸟和那展翅高飞的感觉。久久地寻觅只是徒劳，它消失了，这片纯且静的水的真正主人，永远地消失了，换来的却是一群不懂得珍惜的“强盗”，还有和这些强盗狼狈为奸的“朴实者”。在“它们”的一番折腾下，这水的静、这水的纯早已消失，变得混沌不堪。而历史痛痒会真真切切地勾画出这一切，这混沌的水！</div><br><div><br></div><br><div>      天渐渐地暗，却不见明月和繁星，失落的感觉伴着凉风，随着激涛，扩散到了整个村庄，也浸透了我的心。“一方水土养一方人”，她还会养出同样“淳朴”的人吗？怀着对水的敬意，我不敢妄言。</div><br><div><br></div><br><div>      我依旧如多年前那样极目远眺，同样望不到尽头，此时我却觉得眼前的水很远很远，风中的苦涩味不知还是不是她的。我问风，她无言以对，我问水，她却装作听不见……</div><br><div><br></div><br><div>      也许，是我离她太远了吧，又或许，是她离我更远了吧！</div><br><div><br></div><br><div>                                                                                                                               二零零七年十一月记</div><br></body></html>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/家乡/">家乡</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/随笔/">随笔</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>
@@ -729,11 +876,12 @@
     		&copy; 2015 Landarky
     	</div>
       	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      		<a href="http://www.bigg.top/" target="_blank">Keep It Simple, Stupid!</a>
       	</div>
     </div>
   </div>
 </footer>
+
     </div>
     
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
