@@ -3,33 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>MongoDB副本集延迟备份 | Keep It Simple, Stupid!</title>
+  <title>ElasticSearch通过查询删除文档的API | Keep It Simple, Stupid!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="启动一个replSet副本
-设置延迟配置
+  <meta name="description" content="Doc Source(英文原文)
 
-conf = rs.conf()conf.members[2].priority = 0   (优先级为0)conf.members[2].slaveDelay = 86400 （延迟复制，单位为秒）conf.members[2].hidden = true  (隐藏)rs.reconfig(conf)
 
-如果一台机器无法访问另外一个机器起的mongod">
+通过查询删除的接口允许基于查询从一个或多个索引，一个或多个类型删除文档。这个查询不仅可以提供使用一个简单地字符串查询作为一个参数，还可以使用Query DSL定义在一个请求体中。举个例子：$ curl -XDELETE &apos;http://localhost:9200/twitter/tweet/_query?q=user:kimchy&apos;$ curl -XDELE">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MongoDB副本集延迟备份">
-<meta property="og:url" content="http://www.bigg.top/2015/11/20/MongoDB副本集延迟备份/index.html">
+<meta property="og:title" content="ElasticSearch通过查询删除文档的API">
+<meta property="og:url" content="http://www.bigg.top/2015/11/20/ElasticSearch通过查询删除文档的API/index.html">
 <meta property="og:site_name" content="Keep It Simple, Stupid!">
-<meta property="og:description" content="启动一个replSet副本
-设置延迟配置
+<meta property="og:description" content="Doc Source(英文原文)
 
-conf = rs.conf()conf.members[2].priority = 0   (优先级为0)conf.members[2].slaveDelay = 86400 （延迟复制，单位为秒）conf.members[2].hidden = true  (隐藏)rs.reconfig(conf)
 
-如果一台机器无法访问另外一个机器起的mongod">
-<meta property="og:updated_time" content="2015-11-20T15:28:15.000Z">
+通过查询删除的接口允许基于查询从一个或多个索引，一个或多个类型删除文档。这个查询不仅可以提供使用一个简单地字符串查询作为一个参数，还可以使用Query DSL定义在一个请求体中。举个例子：$ curl -XDELETE &apos;http://localhost:9200/twitter/tweet/_query?q=user:kimchy&apos;$ curl -XDELE">
+<meta property="og:updated_time" content="2015-11-20T15:47:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MongoDB副本集延迟备份">
-<meta name="twitter:description" content="启动一个replSet副本
-设置延迟配置
+<meta name="twitter:title" content="ElasticSearch通过查询删除文档的API">
+<meta name="twitter:description" content="Doc Source(英文原文)
 
-conf = rs.conf()conf.members[2].priority = 0   (优先级为0)conf.members[2].slaveDelay = 86400 （延迟复制，单位为秒）conf.members[2].hidden = true  (隐藏)rs.reconfig(conf)
 
-如果一台机器无法访问另外一个机器起的mongod">
+通过查询删除的接口允许基于查询从一个或多个索引，一个或多个类型删除文档。这个查询不仅可以提供使用一个简单地字符串查询作为一个参数，还可以使用Query DSL定义在一个请求体中。举个例子：$ curl -XDELETE &apos;http://localhost:9200/twitter/tweet/_query?q=user:kimchy&apos;$ curl -XDELE">
   
     <link rel="alternative" href="/atom.xml" title="Keep It Simple, Stupid!" type="application/atom+xml">
   
@@ -228,11 +222,11 @@ conf = rs.conf()conf.members[2].priority = 0   (优先级为0)conf.members[2].sl
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-MongoDB副本集延迟备份" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-ElasticSearch通过查询删除文档的API" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/20/MongoDB副本集延迟备份/" class="article-date">
-  	<time datetime="2015-11-20T15:27:00.000Z" itemprop="datePublished">2015-11-20</time>
+      <a href="/2015/11/20/ElasticSearch通过查询删除文档的API/" class="article-date">
+  	<time datetime="2015-11-20T15:46:12.000Z" itemprop="datePublished">2015-11-20</time>
 </a>
     </div>
   
@@ -245,7 +239,7 @@ conf = rs.conf()conf.members[2].priority = 0   (优先级为0)conf.members[2].sl
         
   
     <h1 class="article-title" itemprop="name">
-      MongoDB副本集延迟备份
+      ElasticSearch通过查询删除文档的API
     </h1>
   
 
@@ -254,7 +248,7 @@ conf = rs.conf()conf.members[2].priority = 0   (优先级为0)conf.members[2].sl
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/EalsticSearch/">EalsticSearch</a></li></ul>
 	</div>
 
         
@@ -269,19 +263,33 @@ conf = rs.conf()conf.members[2].priority = 0   (优先级为0)conf.members[2].sl
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>启动一个replSet副本</li>
-<li>设置延迟配置</li>
-</ul>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">conf = rs.<span class="function"><span class="title">conf</span><span class="params">()</span></span></span><br><span class="line">conf<span class="class">.members</span>[<span class="number">2</span>]<span class="class">.priority</span> = <span class="number">0</span>   (优先级为<span class="number">0</span>)</span><br><span class="line">conf<span class="class">.members</span>[<span class="number">2</span>]<span class="class">.slaveDelay</span> = <span class="number">86400</span> （延迟复制，单位为秒）</span><br><span class="line">conf<span class="class">.members</span>[<span class="number">2</span>]<span class="class">.hidden</span> = true  (隐藏)</span><br><span class="line">rs.<span class="function"><span class="title">reconfig</span><span class="params">(conf)</span></span></span><br></pre></td></tr></table></figure>
+        <blockquote>
+<p><a href="http://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete-by-query.html" target="_blank" rel="external">Doc Source(英文原文)</a></p>
+</blockquote>
 <ul>
-<li>如果一台机器无法访问另外一个机器起的mongodb, 可能是端口没有开放。</li>
-</ul>
-<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">查询iptables:   sudo iptables -<span class="keyword">nL</span></span><br><span class="line">添加端口：       iptables -A <span class="keyword">INPUT</span> -p tcp --dport 29617 -j ACCEPT</span><br></pre></td></tr></table></figure>
-<ul>
-<li>数据库未正常关闭，重启出现问题，试试这个：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> LC_ALL=<span class="string">"C"</span></span><br></pre></td></tr></table></figure>
+<li>通过查询删除的接口允许基于查询从一个或多个索引，一个或多个类型删除文档。这个查询不仅可以提供使用一个简单地字符串查询作为一个参数，还可以使用<a href="http://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html" target="_blank" rel="external">Query DSL</a>定义在一个请求体中。举个例子：<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line">$ curl -XDELETE <span class="string">'http</span>:<span class="comment">//localhost:9200/twitter/tweet/_query?q=user:kimchy'</span></span><br><span class="line"></span><br><span class="line">$ curl -XDELETE <span class="string">'http</span>:<span class="comment">//localhost:9200/twitter/tweet/_query' -d '&#123;</span></span><br><span class="line">    <span class="string">"query"</span> : &#123;</span><br><span class="line">        <span class="string">"term"</span> : &#123; <span class="string">"user"</span> : <span class="string">"kimchy"</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">'</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<blockquote>
+<p><strong>提醒：</strong>这个发送的查询体和<a href="http://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html" target="_blank" rel="external">search api</a>的工作原理一样，必须嵌入<code>query key</code>。</p>
+</blockquote>
+<ul>
+<li><p>以上两个例子实际上做着同样的工作，它为一个确定的用户从twitter这个索引中删除了所有的tweets。这些命令的结果是：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "<span class="attribute">_indices</span>" : <span class="value">&#123;</span><br><span class="line">        "<span class="attribute">twitter</span>" : <span class="value">&#123;</span><br><span class="line">            "<span class="attribute">_shards</span>" : <span class="value">&#123;</span><br><span class="line">                "<span class="attribute">total</span>" : <span class="value"><span class="number">5</span></span>,</span><br><span class="line">                "<span class="attribute">successful</span>" : <span class="value"><span class="number">5</span></span>,</span><br><span class="line">                "<span class="attribute">failed</span>" : <span class="value"><span class="number">0</span></span><br><span class="line">            </span>&#125;</span><br><span class="line">        </span>&#125;</span><br><span class="line">    </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意，通过查询删除绕过版本支持。并且，不推荐从一个索引中删除大量的数据，通过，最好是重建一个新的索引。</p>
+<h3 id="多个索引和类型">多个索引和类型</h3><p>通过查询产出的接口可以被应用到多种类型的索引（包括多个索引）里，例如，我们可以在Twitter的索引中删除所有类型的所有文件：</p>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>curl -<span class="constant">XDELETE </span><span class="string">'http://localhost:9200/twitter/_query?q=user:kimchy'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>我们还可以在一个具体的类型中删除：<br><figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">$ curl -XDELETE 'http://localhost:9200/twitter/tweet,<span class="built_ins">user</span>/_query?q=<span class="built_ins">user</span>:kimchy'</span><br></pre></td></tr></table></figure></p>
+<p>我们也可以从一系列索引中删除所有有特定的<code>tag</code>的<code>tweets</code>(例如每一个用户都有他自己的索引)：<br><figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>curl -<span class="constant">XDELETE </span><span class="string">'http://localhost:9200/kimchy,elasticsearch/_query?q=tag:wow'</span></span><br></pre></td></tr></table></figure></p>
+<p>还可以从所有的索引中删除：<br><figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>curl -<span class="constant">XDELETE </span><span class="string">'http://localhost:9200/_all/_query?q=tag:wow'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="需要的参数">需要的参数</h3><p>当执行通过查询（用<code>q</code>查询参数）的删除操作，通过查询使用Lucene的查询分析器作字符串查询。有一些可传递的附加参数：<br><figure class="highlight autohotkey"><table><tr><td class="code"><pre><span class="line">名称                            描述</span><br><span class="line">df                  在查询中默认的字段在使用时没有定义的字段前缀</span><br><span class="line">analyzer            当分析查询字符串时用的分析器名称</span><br><span class="line">default_operator    默认的操作可以是<span class="literal">AND</span>和<span class="literal">OR</span>.默认是<span class="literal">OR</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="请求主体">请求主体</h3><p>通过查询的删除可以在它的主体内使用<a href="http://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html" target="_blank" rel="external">Query DSL</a>以表示这个查询应该被执行并删除所有的文档。主体内容也可以是命名为<code>source</code>的REST参数。</p>
+<h3 id="分发">分发</h3><p>通过查询的删除接口从所有的主分片散发出去，并从那里复制所有分片副本。</p>
+<h3 id="更新路由">更新路由</h3><p>路由值（这些值为用逗号隔开的列表）可以被指定以控制该分片由查询请求来执行删除。</p>
+<h3 id="限制">限制</h3><p>通过查询的删除不支持以下查询和过滤器： <code>has_child</code>，<code>has_parent</code> 和 <code>top_children</code>。</p>
 
       
     </div>
@@ -291,18 +299,18 @@ conf = rs.conf()conf.members[2].priority = 0   (优先级为0)conf.members[2].sl
     
 <nav id="article-nav">
   
-    <a href="/2015/11/20/ElasticSearch的更新索引设置/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/11/20/Book-List-Share/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          ElasticSearch的更新索引设置
+          Book List &amp; Share
         
       </div>
     </a>
   
   
-    <a href="/2015/11/20/Django安装MySQL问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Django安装MySQL问题</div>
+    <a href="/2015/11/20/ElasticSearch的更新索引设置/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ElasticSearch的更新索引设置</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
