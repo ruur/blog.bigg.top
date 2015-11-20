@@ -214,6 +214,65 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Django安装MySQL问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/20/Django安装MySQL问题/" class="article-date">
+  	<time datetime="2015-11-20T14:46:10.000Z" itemprop="datePublished">2015-11-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/20/Django安装MySQL问题/">Django安装MySQL问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题描述：">问题描述：</h3><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">mysql_config <span class="keyword">not</span> found</span><br></pre></td></tr></table></figure>
+<h3 id="问题原因及解决方法：">问题原因及解决方法：</h3><ul>
+<li>没有安装客户端，下载安装即可<br><code>http://dev.mysql.com/downloads/mysql/</code></li>
+<li><p>修改venv的环境变量。编辑<code>/bin/activate</code>文件，并在它后面添加以下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">_OLD_VIRTUAL_PATH=<span class="string">"<span class="variable">$PATH</span>"</span></span><br><span class="line"> </span><br><span class="line">    PATH=<span class="string">"<span class="variable">$VIRTUAL_ENV</span>/bin:<span class="variable">$PATH</span>"</span></span><br><span class="line"> </span><br><span class="line">    PATH=<span class="string">"<span class="variable">$PATH</span>:/usr/local/mysql/bin/"</span></span><br><span class="line"> </span><br><span class="line">    <span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>pip install MySQL-python</code></p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="vim-快捷键及常见问题" class="article article-type-vim" itemscope itemprop="blogPost">
   
     <div class="article-meta">
