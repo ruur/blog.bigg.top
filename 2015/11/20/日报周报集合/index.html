@@ -3,17 +3,87 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Top Gigg</title>
+  <title>日报周报集合 | Top Gigg</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep It Simple, Stupid!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Top Gigg">
-<meta property="og:url" content="http://www.bigg.top/index.html">
+  <meta name="description" content="awesome-archive
+A curated list of awesome archive
+
+Daily
+DailyJS
+
+A JavaScript Blog.
+
+
+知乎日报
+
+Python日报
+
+机器学习日报
+
+Web技术日报
+
+湾区日报
+
+
+Weekly
+Html5 Weekly
+
+A free, once–weekly HTML5 and Web Platform technolog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="日报周报集合">
+<meta property="og:url" content="http://www.bigg.top/2015/11/20/日报周报集合/index.html">
 <meta property="og:site_name" content="Top Gigg">
-<meta property="og:description" content="Keep It Simple, Stupid!">
+<meta property="og:description" content="awesome-archive
+A curated list of awesome archive
+
+Daily
+DailyJS
+
+A JavaScript Blog.
+
+
+知乎日报
+
+Python日报
+
+机器学习日报
+
+Web技术日报
+
+湾区日报
+
+
+Weekly
+Html5 Weekly
+
+A free, once–weekly HTML5 and Web Platform technolog">
+<meta property="og:updated_time" content="2015-11-20T12:07:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Top Gigg">
-<meta name="twitter:description" content="Keep It Simple, Stupid!">
+<meta name="twitter:title" content="日报周报集合">
+<meta name="twitter:description" content="awesome-archive
+A curated list of awesome archive
+
+Daily
+DailyJS
+
+A JavaScript Blog.
+
+
+知乎日报
+
+Python日报
+
+机器学习日报
+
+Web技术日报
+
+湾区日报
+
+
+Weekly
+Html5 Weekly
+
+A free, once–weekly HTML5 and Web Platform technolog">
   
     <link rel="alternative" href="/atom.xml" title="Top Gigg" type="application/atom+xml">
   
@@ -214,78 +284,7 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="vim-快捷键及常见问题" class="article article-type-vim" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/20/快捷键及常见问题/" class="article-date">
-  	<time datetime="2015-11-20T12:05:01.000Z" itemprop="datePublished">2015-11-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/20/快捷键及常见问题/">快捷键及常见问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="常用的vim命令集合">常用的vim命令集合</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim <span class="keyword">test</span>.py +12         打开并跳转到12行</span><br><span class="line"><span class="keyword">H</span> J K <span class="keyword">L</span>                 左/下/上/右</span><br><span class="line"><span class="keyword">g</span> + <span class="keyword">g</span>                   跳至顶行</span><br><span class="line">, + <span class="keyword">n</span>                   显示导航树</span><br><span class="line">ctrl + <span class="keyword">L</span>                切换到右边屏幕</span><br><span class="line">:%s/"/'/<span class="keyword">g</span>               全文用单引号替换双引号</span><br></pre></td></tr></table></figure>
-<h3 id="四空格问题">四空格问题</h3><h5 id="在-vimrc中添加以下代码后，重启vim即可实现按TAB产生4个空格：">在.vimrc中添加以下代码后，重启vim即可实现按TAB产生4个空格：</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> ts=<span class="number">4</span> (ts是tabstop的缩写，设置TAB宽<span class="number">4</span>个空格)</span><br><span class="line"><span class="built_in">set</span> expandtab</span><br></pre></td></tr></table></figure>
-<h5 id="对于已保存的文件，可以使用下面的方法进行空格和TAB的替换：">对于已保存的文件，可以使用下面的方法进行空格和TAB的替换：</h5><ul>
-<li>TAB替换为空格</li>
-</ul>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">:set</span> ts=<span class="number">4</span></span><br><span class="line"><span class="symbol">:set</span> expandtab</span><br><span class="line"><span class="symbol">:%retab!</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>空格替换为TAB：</li>
-</ul>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">:set</span> ts=<span class="number">4</span></span><br><span class="line"><span class="symbol">:set</span> noexpandtab</span><br><span class="line"><span class="symbol">:%retab</span></span><br></pre></td></tr></table></figure>
-<p>注意： <strong>加！是用于处理非空白字符之后的TAB，即所有的TAB，若不加！，则只处理行首的TAB</strong></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/备忘录/">备忘录</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/备忘录/">备忘录</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-日报周报集合" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-日报周报集合" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/11/20/日报周报集合/" class="article-date">
@@ -301,12 +300,27 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/20/日报周报集合/">日报周报集合</a>
+    <h1 class="article-title" itemprop="name">
+      日报周报集合
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读/">阅读</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/阅读/">阅读</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -569,103 +583,51 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读/">阅读</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/阅读/">阅读</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-VIM缩进处理" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/20/VIM缩进处理/" class="article-date">
-  	<time datetime="2015-11-20T05:30:10.000Z" itemprop="datePublished">2015-11-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+<nav id="article-nav">
+  
+    <a href="/2015/11/20/快捷键及常见问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
         
+          快捷键及常见问题
+        
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/20/VIM缩进处理/">VIM缩进处理</a>
-    </h1>
   
+    <a href="/2015/11/20/VIM缩进处理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">VIM缩进处理</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="VIM缩进处理">VIM缩进处理</h2><h4 id="在-vimrc中添加以下代码后，重启vim即可实现按TAB产生4个空格：">在<code>.vimrc</code>中添加以下代码后，重启vim即可实现按TAB产生4个空格：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> ts=<span class="number">4</span> (ts是tabstop的缩写，设置TAB宽<span class="number">4</span>个空格)</span><br><span class="line"><span class="built_in">set</span> expandtab</span><br></pre></td></tr></table></figure>
-<h4 id="对于已保存的文件，可以使用下面的方法进行空格和TAB的替换：">对于已保存的文件，可以使用下面的方法进行空格和TAB的替换：</h4><ul>
-<li>TAB替换为空格</li>
-</ul>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">:set</span> ts=<span class="number">4</span></span><br><span class="line"><span class="symbol">:set</span> expandtab</span><br><span class="line"><span class="symbol">:%retab!</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>空格替换为TAB：</li>
-</ul>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">:set</span> ts=<span class="number">4</span></span><br><span class="line"><span class="symbol">:set</span> noexpandtab</span><br><span class="line"><span class="symbol">:%retab</span></span><br></pre></td></tr></table></figure>
-<p>注意： <strong>加！是用于处理非空白字符之后的TAB，即所有的TAB，若不加！，则只处理行首的TAB</strong></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/备忘录/">备忘录</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/备忘录/">备忘录</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
   
 </article>
 
 
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
 
 
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -689,8 +651,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
