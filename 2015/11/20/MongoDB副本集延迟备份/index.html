@@ -3,21 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>快捷键及常见问题 | Keep It Simple, Stupid!</title>
+  <title>MongoDB副本集延迟备份 | Keep It Simple, Stupid!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="常用的vim命令集合vim test.py +12         打开并跳转到12行H J K L                 左/下/上/右g + g                   跳至顶行, + n                   显示导航树ctrl + L                切换到右边屏幕:%s/&quot;/&apos;/g               全文用单引号替换双引号
-四空">
+  <meta name="description" content="启动一个replSet副本
+设置延迟配置
+
+conf = rs.conf()conf.members[2].priority = 0   (优先级为0)conf.members[2].slaveDelay = 86400 （延迟复制，单位为秒）conf.members[2].hidden = true  (隐藏)rs.reconfig(conf)
+
+如果一台机器无法访问另外一个机器起的mongod">
 <meta property="og:type" content="article">
-<meta property="og:title" content="快捷键及常见问题">
-<meta property="og:url" content="http://www.bigg.top/2015/11/20/快捷键及常见问题/index.html">
+<meta property="og:title" content="MongoDB副本集延迟备份">
+<meta property="og:url" content="http://www.bigg.top/2015/11/20/MongoDB副本集延迟备份/index.html">
 <meta property="og:site_name" content="Keep It Simple, Stupid!">
-<meta property="og:description" content="常用的vim命令集合vim test.py +12         打开并跳转到12行H J K L                 左/下/上/右g + g                   跳至顶行, + n                   显示导航树ctrl + L                切换到右边屏幕:%s/&quot;/&apos;/g               全文用单引号替换双引号
-四空">
-<meta property="og:updated_time" content="2015-11-20T15:13:14.000Z">
+<meta property="og:description" content="启动一个replSet副本
+设置延迟配置
+
+conf = rs.conf()conf.members[2].priority = 0   (优先级为0)conf.members[2].slaveDelay = 86400 （延迟复制，单位为秒）conf.members[2].hidden = true  (隐藏)rs.reconfig(conf)
+
+如果一台机器无法访问另外一个机器起的mongod">
+<meta property="og:updated_time" content="2015-11-20T15:28:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="快捷键及常见问题">
-<meta name="twitter:description" content="常用的vim命令集合vim test.py +12         打开并跳转到12行H J K L                 左/下/上/右g + g                   跳至顶行, + n                   显示导航树ctrl + L                切换到右边屏幕:%s/&quot;/&apos;/g               全文用单引号替换双引号
-四空">
+<meta name="twitter:title" content="MongoDB副本集延迟备份">
+<meta name="twitter:description" content="启动一个replSet副本
+设置延迟配置
+
+conf = rs.conf()conf.members[2].priority = 0   (优先级为0)conf.members[2].slaveDelay = 86400 （延迟复制，单位为秒）conf.members[2].hidden = true  (隐藏)rs.reconfig(conf)
+
+如果一台机器无法访问另外一个机器起的mongod">
   
     <link rel="alternative" href="/atom.xml" title="Keep It Simple, Stupid!" type="application/atom+xml">
   
@@ -216,11 +228,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="vim-快捷键及常见问题" class="article article-type-vim" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-MongoDB副本集延迟备份" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/20/快捷键及常见问题/" class="article-date">
-  	<time datetime="2015-11-20T12:05:01.000Z" itemprop="datePublished">2015-11-20</time>
+      <a href="/2015/11/20/MongoDB副本集延迟备份/" class="article-date">
+  	<time datetime="2015-11-20T15:27:00.000Z" itemprop="datePublished">2015-11-20</time>
 </a>
     </div>
   
@@ -233,7 +245,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      快捷键及常见问题
+      MongoDB副本集延迟备份
     </h1>
   
 
@@ -242,7 +254,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li></ul>
 	</div>
 
         
@@ -257,17 +269,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="常用的vim命令集合">常用的vim命令集合</h3><figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">vim <span class="keyword">test</span>.py +12         打开并跳转到12行</span><br><span class="line"><span class="keyword">H</span> J K <span class="keyword">L</span>                 左/下/上/右</span><br><span class="line"><span class="keyword">g</span> + <span class="keyword">g</span>                   跳至顶行</span><br><span class="line">, + <span class="keyword">n</span>                   显示导航树</span><br><span class="line">ctrl + <span class="keyword">L</span>                切换到右边屏幕</span><br><span class="line">:%s/"/'/<span class="keyword">g</span>               全文用单引号替换双引号</span><br></pre></td></tr></table></figure>
-<h3 id="四空格问题">四空格问题</h3><h5 id="在-vimrc中添加以下代码后，重启vim即可实现按TAB产生4个空格：">在.vimrc中添加以下代码后，重启vim即可实现按TAB产生4个空格：</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> ts=<span class="number">4</span> (ts是tabstop的缩写，设置TAB宽<span class="number">4</span>个空格)</span><br><span class="line"><span class="built_in">set</span> expandtab</span><br></pre></td></tr></table></figure>
-<h5 id="对于已保存的文件，可以使用下面的方法进行空格和TAB的替换：">对于已保存的文件，可以使用下面的方法进行空格和TAB的替换：</h5><ul>
-<li>TAB替换为空格</li>
+        <ul>
+<li>启动一个replSet副本</li>
+<li>设置延迟配置</li>
 </ul>
-<figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line"><span class="symbol">:set</span> ts=<span class="number">4</span></span><br><span class="line"><span class="symbol">:set</span> expandtab</span><br><span class="line"><span class="symbol">:%retab!</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">conf = rs.<span class="function"><span class="title">conf</span><span class="params">()</span></span></span><br><span class="line">conf<span class="class">.members</span>[<span class="number">2</span>]<span class="class">.priority</span> = <span class="number">0</span>   (优先级为<span class="number">0</span>)</span><br><span class="line">conf<span class="class">.members</span>[<span class="number">2</span>]<span class="class">.slaveDelay</span> = <span class="number">86400</span> （延迟复制，单位为秒）</span><br><span class="line">conf<span class="class">.members</span>[<span class="number">2</span>]<span class="class">.hidden</span> = true  (隐藏)</span><br><span class="line">rs.<span class="function"><span class="title">reconfig</span><span class="params">(conf)</span></span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>空格替换为TAB：</li>
+<li>如果一台机器无法访问另外一个机器起的mongodb, 可能是端口没有开放。</li>
 </ul>
-<figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line"><span class="symbol">:set</span> ts=<span class="number">4</span></span><br><span class="line"><span class="symbol">:set</span> noexpandtab</span><br><span class="line"><span class="symbol">:%retab</span></span><br></pre></td></tr></table></figure>
-<p>注意： <strong>加！是用于处理非空白字符之后的TAB，即所有的TAB，若不加！，则只处理行首的TAB</strong></p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">查询iptables:   sudo iptables -<span class="keyword">nL</span></span><br><span class="line">添加端口：       iptables -A <span class="keyword">INPUT</span> -p tcp --dport 29617 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<ul>
+<li>数据库未正常关闭，重启出现问题，试试这个：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> LC_ALL=<span class="string">"C"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
       
     </div>
@@ -277,18 +291,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/11/20/Django安装MySQL问题/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/11/20/ElasticSearch的更新索引设置/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Django安装MySQL问题
+          ElasticSearch的更新索引设置
         
       </div>
     </a>
   
   
-    <a href="/2015/11/20/日报周报集合/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">日报周报集合</div>
+    <a href="/2015/11/20/Django安装MySQL问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Django安装MySQL问题</div>
       <strong class="article-nav-caption">></strong>
     </a>
   

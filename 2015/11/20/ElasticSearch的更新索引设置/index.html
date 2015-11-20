@@ -3,21 +3,42 @@
 <head>
   <meta charset="utf-8">
   
-  <title>快捷键及常见问题 | Keep It Simple, Stupid!</title>
+  <title>ElasticSearch的更新索引设置 | Keep It Simple, Stupid!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="常用的vim命令集合vim test.py +12         打开并跳转到12行H J K L                 左/下/上/右g + g                   跳至顶行, + n                   显示导航树ctrl + L                切换到右边屏幕:%s/&quot;/&apos;/g               全文用单引号替换双引号
-四空">
+  <meta name="description" content="Doc Source(英文原文)
+
+
+实时更改具体的索引级别设置
+用/_settings(更新所有的索引)或者{index}/_settings来更新一个或多个索引配置。例如：
+&amp;#123;    &quot;index&quot; : &amp;#123;        &quot;number_of_replicas&quot; : 4    &amp;#125;&amp;#125;
+
+下面将会把当前的副本数改为4，例如（curl）:
+curl -XPUT">
 <meta property="og:type" content="article">
-<meta property="og:title" content="快捷键及常见问题">
-<meta property="og:url" content="http://www.bigg.top/2015/11/20/快捷键及常见问题/index.html">
+<meta property="og:title" content="ElasticSearch的更新索引设置">
+<meta property="og:url" content="http://www.bigg.top/2015/11/20/ElasticSearch的更新索引设置/index.html">
 <meta property="og:site_name" content="Keep It Simple, Stupid!">
-<meta property="og:description" content="常用的vim命令集合vim test.py +12         打开并跳转到12行H J K L                 左/下/上/右g + g                   跳至顶行, + n                   显示导航树ctrl + L                切换到右边屏幕:%s/&quot;/&apos;/g               全文用单引号替换双引号
-四空">
-<meta property="og:updated_time" content="2015-11-20T15:13:14.000Z">
+<meta property="og:description" content="Doc Source(英文原文)
+
+
+实时更改具体的索引级别设置
+用/_settings(更新所有的索引)或者{index}/_settings来更新一个或多个索引配置。例如：
+&amp;#123;    &quot;index&quot; : &amp;#123;        &quot;number_of_replicas&quot; : 4    &amp;#125;&amp;#125;
+
+下面将会把当前的副本数改为4，例如（curl）:
+curl -XPUT">
+<meta property="og:updated_time" content="2015-11-20T15:31:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="快捷键及常见问题">
-<meta name="twitter:description" content="常用的vim命令集合vim test.py +12         打开并跳转到12行H J K L                 左/下/上/右g + g                   跳至顶行, + n                   显示导航树ctrl + L                切换到右边屏幕:%s/&quot;/&apos;/g               全文用单引号替换双引号
-四空">
+<meta name="twitter:title" content="ElasticSearch的更新索引设置">
+<meta name="twitter:description" content="Doc Source(英文原文)
+
+
+实时更改具体的索引级别设置
+用/_settings(更新所有的索引)或者{index}/_settings来更新一个或多个索引配置。例如：
+&amp;#123;    &quot;index&quot; : &amp;#123;        &quot;number_of_replicas&quot; : 4    &amp;#125;&amp;#125;
+
+下面将会把当前的副本数改为4，例如（curl）:
+curl -XPUT">
   
     <link rel="alternative" href="/atom.xml" title="Keep It Simple, Stupid!" type="application/atom+xml">
   
@@ -216,11 +237,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="vim-快捷键及常见问题" class="article article-type-vim" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-ElasticSearch的更新索引设置" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/20/快捷键及常见问题/" class="article-date">
-  	<time datetime="2015-11-20T12:05:01.000Z" itemprop="datePublished">2015-11-20</time>
+      <a href="/2015/11/20/ElasticSearch的更新索引设置/" class="article-date">
+  	<time datetime="2015-11-20T15:28:49.000Z" itemprop="datePublished">2015-11-20</time>
 </a>
     </div>
   
@@ -233,7 +254,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      快捷键及常见问题
+      ElasticSearch的更新索引设置
     </h1>
   
 
@@ -242,7 +263,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li></ul>
 	</div>
 
         
@@ -257,17 +278,78 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="常用的vim命令集合">常用的vim命令集合</h3><figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">vim <span class="keyword">test</span>.py +12         打开并跳转到12行</span><br><span class="line"><span class="keyword">H</span> J K <span class="keyword">L</span>                 左/下/上/右</span><br><span class="line"><span class="keyword">g</span> + <span class="keyword">g</span>                   跳至顶行</span><br><span class="line">, + <span class="keyword">n</span>                   显示导航树</span><br><span class="line">ctrl + <span class="keyword">L</span>                切换到右边屏幕</span><br><span class="line">:%s/"/'/<span class="keyword">g</span>               全文用单引号替换双引号</span><br></pre></td></tr></table></figure>
-<h3 id="四空格问题">四空格问题</h3><h5 id="在-vimrc中添加以下代码后，重启vim即可实现按TAB产生4个空格：">在.vimrc中添加以下代码后，重启vim即可实现按TAB产生4个空格：</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> ts=<span class="number">4</span> (ts是tabstop的缩写，设置TAB宽<span class="number">4</span>个空格)</span><br><span class="line"><span class="built_in">set</span> expandtab</span><br></pre></td></tr></table></figure>
-<h5 id="对于已保存的文件，可以使用下面的方法进行空格和TAB的替换：">对于已保存的文件，可以使用下面的方法进行空格和TAB的替换：</h5><ul>
-<li>TAB替换为空格</li>
-</ul>
-<figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line"><span class="symbol">:set</span> ts=<span class="number">4</span></span><br><span class="line"><span class="symbol">:set</span> expandtab</span><br><span class="line"><span class="symbol">:%retab!</span></span><br></pre></td></tr></table></figure>
+        <blockquote>
+<p><a href="http://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html#indices-update-settings" target="_blank" rel="external">Doc Source(英文原文)</a></p>
+</blockquote>
 <ul>
-<li>空格替换为TAB：</li>
+<li>实时更改具体的索引级别设置</li>
+<li><p>用<code>/_settings</code>(更新所有的索引)或者<code>{index}/_settings</code>来更新一个或多个索引配置。例如：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "<span class="attribute">index</span>" : <span class="value">&#123;</span><br><span class="line">        "<span class="attribute">number_of_replicas</span>" : <span class="value"><span class="number">4</span></span><br><span class="line">    </span>&#125;</span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下面将会把当前的副本数改为4，例如（curl）:</p>
+<figure class="highlight scilab"><table><tr><td class="code"><pre><span class="line">curl -XPUT <span class="string">'localhost:9200/my_index/_settings'</span> -d <span class="string">'</span><br><span class="line">&#123;</span><br><span class="line">    "</span>index<span class="string">" : &#123;</span><br><span class="line">        "</span>number_of_replicas<span class="string">" : 4</span><br><span class="line">    &#125;</span><br><span class="line">&#125;'</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line"><span class="symbol">:set</span> ts=<span class="number">4</span></span><br><span class="line"><span class="symbol">:set</span> noexpandtab</span><br><span class="line"><span class="symbol">:%retab</span></span><br></pre></td></tr></table></figure>
-<p>注意： <strong>加！是用于处理非空白字符之后的TAB，即所有的TAB，若不加！，则只处理行首的TAB</strong></p>
+<blockquote>
+<p><strong>提醒：</strong>当改变副本数量时，索引需要打开。在索引关闭的状态下改变副本的数量会阻止索引再次正确地打开。</p>
+</blockquote>
+<p>以下列出的设置用更新设置的API可以被改变：</p>
+<ul>
+<li><code>index.number_of_replicas</code>   <ul>
+<li>每个分片的副本数量</li>
+</ul>
+</li>
+<li><code>index.auto_expand_replicas (string)</code><ul>
+<li>用短横线分隔下限和上限，或者用<code>all</code>作为上限，用<code>false</code>使该设置失效</li>
+</ul>
+</li>
+<li><code>index.blocks.read_only</code><ul>
+<li>设为<code>true</code>来让索引为只读，设为<code>false</code>来允许写和元数据的改变</li>
+</ul>
+</li>
+<li><code>index.blocks.read</code><ul>
+<li>置为<code>true</code>,对索引禁用读操作</li>
+</ul>
+</li>
+<li><code>index.blocks.write</code><ul>
+<li>置为<code>true</code>,对索引禁用写操作</li>
+</ul>
+</li>
+<li><code>index.blocks.metadata</code><ul>
+<li>置为<code>true</code>,对索引禁用元数据操作</li>
+</ul>
+</li>
+<li><code>index.refresh_interva</code><ul>
+<li>切片的同步刷新间隔</li>
+</ul>
+</li>
+<li><code>index.index_concurrency</code><ul>
+<li>默认置为<code>8</code></li>
+</ul>
+</li>
+<li><code>index.fail_on_merge_failure</code><ul>
+<li>默认置为<code>true</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="大量建索引的用法">大量建索引的用法</h3><ul>
+<li>例如，对于大量的索引，更新设置的API以高性能动态地改变索引，然后转移它到更实时的索引状态。在大量地建索引之前，用以下方法：<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">curl -XPUT localhost:9200/<span class="keyword">test</span>/_settings -<span class="keyword">d</span> '&#123;</span><br><span class="line">    <span class="string">"index"</span> : &#123;</span><br><span class="line">        <span class="string">"refresh_interval"</span> : <span class="string">"-1"</span></span><br><span class="line">    &#125; &#125;'</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>（另一个优化的选项是不加任何副本开始建索引，并在之后添加它们，然而这取决于其使用的具体情况。）</p>
+<ul>
+<li><p>一旦大量建索引完成，就可以更新这些设置了（回到默认的情况，比如：）</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">curl -XPUT localhost:9200/<span class="keyword">test</span>/_settings -<span class="keyword">d</span> '&#123;</span><br><span class="line">    <span class="string">"index"</span> : &#123;</span><br><span class="line">        <span class="string">"refresh_interval"</span> : <span class="string">"1s"</span></span><br><span class="line">    &#125; &#125;'</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>并且，一个优化应该被调用：</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="title">curl</span> -XPOST <span class="string">'http://localhost:9200/test/_optimize?max_num_segments=5'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="更新索引分析">更新索引分析</h3><ul>
+<li>对索引定义新的analyzers也是可能的。但是先关闭索引并在改变之后打开它。</li>
+<li>例如当<code>content</code> analyzer还没有定义<code>myindex</code>，你可以使用以下的命令来添加它：<figure class="highlight scilab"><table><tr><td class="code"><pre><span class="line">curl -XPOST <span class="string">'localhost:9200/myindex/_close'</span></span><br><span class="line"></span><br><span class="line">curl -XPUT <span class="string">'localhost:9200/myindex/_settings'</span> -d <span class="string">'&#123;</span><br><span class="line">  "</span>analysis<span class="string">" : &#123;</span><br><span class="line">    "</span>analyzer<span class="string">":&#123;</span><br><span class="line">      "</span>content<span class="string">":&#123;</span><br><span class="line">        "</span>type<span class="string">":"</span>custom<span class="string">",</span><br><span class="line">        "</span>tokenizer<span class="string">":"</span>whitespace<span class="string">"</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;'</span></span><br><span class="line"></span><br><span class="line">curl -XPOST <span class="string">'localhost:9200/myindex/_open'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
       
     </div>
@@ -277,18 +359,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/11/20/Django安装MySQL问题/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Django安装MySQL问题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/11/20/日报周报集合/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">日报周报集合</div>
+    <a href="/2015/11/20/MongoDB副本集延迟备份/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MongoDB副本集延迟备份</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
