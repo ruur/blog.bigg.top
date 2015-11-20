@@ -98,6 +98,8 @@
 				        
 							<li><a href="/categories/备忘">备忘</a></li>
 				        
+							<li><a href="/categories/分享">分享</a></li>
+				        
 						</ul>
 					</nav>
 					<nav class="header-nav">
@@ -105,15 +107,11 @@
 							
 								<a class="github" target="_blank" href="https://github.com/jishuniu" title="github">github</a>
 					        
-								<a class="weibo" target="_blank" href="http://weibo.com/1889024177/profile?topnav=1&wvr=6" title="weibo">weibo</a>
-					        
 								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/yang-heng-10" title="zhihu">zhihu</a>
 					        
 								<a class="douban" target="_blank" href="http://www.douban.com/people/54627130/" title="douban">douban</a>
 					        
 								<a class="facebook" target="_blank" href="https://www.facebook.com/yangheng2256" title="facebook">facebook</a>
-					        
-								<a class="google" target="_blank" href="https://plus.google.com/u/0/107994769456172482002/posts" title="google">google</a>
 					        
 								<a class="twitter" target="_blank" href="https://twitter.com/yangheng2256" title="twitter">twitter</a>
 					        
@@ -126,7 +124,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/EalsticSearch/" style="font-size: 10px;">EalsticSearch</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/书/" style="font-size: 10px;">书</a> <a href="/tags/书签/" style="font-size: 10px;">书签</a> <a href="/tags/家乡/" style="font-size: 10px;">家乡</a> <a href="/tags/阅读/" style="font-size: 10px;">阅读</a>
+						<a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/EalsticSearch/" style="font-size: 10px;">EalsticSearch</a> <a href="/tags/ElasticSearch/" style="font-size: 20px;">ElasticSearch</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/书/" style="font-size: 10px;">书</a> <a href="/tags/书签/" style="font-size: 10px;">书签</a> <a href="/tags/图书馆/" style="font-size: 10px;">图书馆</a> <a href="/tags/家乡/" style="font-size: 10px;">家乡</a> <a href="/tags/阅读/" style="font-size: 10px;">阅读</a>
 					</div>
 				</section>
 				
@@ -185,6 +183,8 @@
 		        
 					<li><a href="/categories/备忘">备忘</a></li>
 		        
+					<li><a href="/categories/分享">分享</a></li>
+		        
 		        <div class="clearfix"></div>
 				</ul>
 			</nav>
@@ -193,15 +193,11 @@
 					
 						<a class="github" target="_blank" href="https://github.com/jishuniu" title="github">github</a>
 			        
-						<a class="weibo" target="_blank" href="http://weibo.com/1889024177/profile?topnav=1&wvr=6" title="weibo">weibo</a>
-			        
 						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/yang-heng-10" title="zhihu">zhihu</a>
 			        
 						<a class="douban" target="_blank" href="http://www.douban.com/people/54627130/" title="douban">douban</a>
 			        
 						<a class="facebook" target="_blank" href="https://www.facebook.com/yangheng2256" title="facebook">facebook</a>
-			        
-						<a class="google" target="_blank" href="https://plus.google.com/u/0/107994769456172482002/posts" title="google">google</a>
 			        
 						<a class="twitter" target="_blank" href="https://twitter.com/yangheng2256" title="twitter">twitter</a>
 			        
@@ -213,6 +209,76 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-ElasticSearch的文档删除API" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/21/ElasticSearch的文档删除API/" class="article-date">
+  	<time datetime="2015-11-20T16:03:34.000Z" itemprop="datePublished">2015-11-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/21/ElasticSearch的文档删除API/">ElasticSearch的文档删除API</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="http://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete.html" target="_blank" rel="external">doc source(英文原文)</a></p>
+</blockquote>
+<ul>
+<li>这个删除接口允许基于具体的索引的<code>id</code>删除一个JSON类型的文档。接下来的例子是从一个index为<code>twitter</code>，type为<code>tweet</code>，并且id为<code>1</code>的文档中删除JSON文档:<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>curl -<span class="constant">XDELETE </span><span class="string">'http://localhost:9200/twitter/tweet/1'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上述删除操作产生的结果为：<br><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "<span class="attribute">found</span>" : <span class="value"><span class="literal">true</span></span>,</span><br><span class="line">    "<span class="attribute">_index</span>" : <span class="value"><span class="string">"twitter"</span></span>,</span><br><span class="line">    "<span class="attribute">_type</span>" : <span class="value"><span class="string">"tweet"</span></span>,</span><br><span class="line">    "<span class="attribute">_id</span>" : <span class="value"><span class="string">"1"</span></span>,</span><br><span class="line">    "<span class="attribute">_version</span>" : <span class="value"><span class="number">2</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="更新版本">更新版本</h3><p>每个文档建索引就是版本化。当删除了一个文档，<code>version</code>可以被指定以确保我们试图删除的相关文档确实被删除，它并没有在此期间被修改。对一个文档执行写的操作，包括删除，会引起版本的增加。</p>
+<h3 id="更新路由">更新路由</h3><p>当建索引时使用控制路由的能力，以确保删除一个文档，路由值也应该被提供。比如：<br><figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>curl -<span class="constant">XDELETE </span><span class="string">'http://localhost:9200/twitter/tweet/1?routing=kimchy'</span></span><br></pre></td></tr></table></figure></p>
+<p>以上操作将会删除id为1的tweet，但是会基于用户被路由。注意，发出路由不正确的删除，会导致文档没有被删除。<br>很多时候，当删除一个文档时，路由的值并不被知晓。对于这些情形，指定路由的映射作为请求，并且当路由值没有被指定时，这个删除将会被自动地散发到所有的分片中。</p>
+<h3 id="Parent">Parent</h3><p><code>parent</code>参数可以被设置，它将会基于和路由参数相同的设置。<br>注意删除父文档时不会自动删除它的子文档。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/备忘/">备忘</a><a class="article-category-link" href="/categories/备忘/技术/">技术</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-Book-List-Share" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -272,12 +338,12 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/书/">书</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/书签/">书签</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/书/">书</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/书签/">书签</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图书馆/">图书馆</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/图书馆/">图书馆</a>
+	<a class="article-category-link" href="/categories/分享/">分享</a>
 	</div>
 
 
@@ -582,512 +648,10 @@
 
 
   
-    <article id="post-Django安装MySQL问题" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2015/11/20/Django安装MySQL问题/" class="article-date">
-  	<time datetime="2015-11-20T14:46:10.000Z" itemprop="datePublished">2015-11-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/20/Django安装MySQL问题/">Django安装MySQL问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="问题描述：">问题描述：</h3><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">mysql_config <span class="keyword">not</span> found</span><br></pre></td></tr></table></figure>
-<h3 id="问题原因及解决方法：">问题原因及解决方法：</h3><ul>
-<li>没有安装客户端，下载安装即可<br><code>http://dev.mysql.com/downloads/mysql/</code></li>
-<li><p>修改venv的环境变量。编辑<code>/bin/activate</code>文件，并在它后面添加以下内容</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">_OLD_VIRTUAL_PATH=<span class="string">"<span class="variable">$PATH</span>"</span></span><br><span class="line"> </span><br><span class="line">    PATH=<span class="string">"<span class="variable">$VIRTUAL_ENV</span>/bin:<span class="variable">$PATH</span>"</span></span><br><span class="line"> </span><br><span class="line">    PATH=<span class="string">"<span class="variable">$PATH</span>:/usr/local/mysql/bin/"</span></span><br><span class="line"> </span><br><span class="line">    <span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>pip install MySQL-python</code></p>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/备忘/">备忘</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="vim-快捷键及常见问题" class="article article-type-vim" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/20/快捷键及常见问题/" class="article-date">
-  	<time datetime="2015-11-20T12:05:01.000Z" itemprop="datePublished">2015-11-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/20/快捷键及常见问题/">快捷键及常见问题</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="常用的vim命令集合">常用的vim命令集合</h3><figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">vim <span class="keyword">test</span>.py +12         打开并跳转到12行</span><br><span class="line"><span class="keyword">H</span> J K <span class="keyword">L</span>                 左/下/上/右</span><br><span class="line"><span class="keyword">g</span> + <span class="keyword">g</span>                   跳至顶行</span><br><span class="line">, + <span class="keyword">n</span>                   显示导航树</span><br><span class="line">ctrl + <span class="keyword">L</span>                切换到右边屏幕</span><br><span class="line">:%s/"/'/<span class="keyword">g</span>               全文用单引号替换双引号</span><br></pre></td></tr></table></figure>
-<h3 id="四空格问题">四空格问题</h3><h5 id="在-vimrc中添加以下代码后，重启vim即可实现按TAB产生4个空格：">在.vimrc中添加以下代码后，重启vim即可实现按TAB产生4个空格：</h5><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">set</span> ts=<span class="number">4</span> (ts是tabstop的缩写，设置TAB宽<span class="number">4</span>个空格)</span><br><span class="line"><span class="built_in">set</span> expandtab</span><br></pre></td></tr></table></figure>
-<h5 id="对于已保存的文件，可以使用下面的方法进行空格和TAB的替换：">对于已保存的文件，可以使用下面的方法进行空格和TAB的替换：</h5><ul>
-<li>TAB替换为空格</li>
-</ul>
-<figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line"><span class="symbol">:set</span> ts=<span class="number">4</span></span><br><span class="line"><span class="symbol">:set</span> expandtab</span><br><span class="line"><span class="symbol">:%retab!</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>空格替换为TAB：</li>
-</ul>
-<figure class="highlight crystal"><table><tr><td class="code"><pre><span class="line"><span class="symbol">:set</span> ts=<span class="number">4</span></span><br><span class="line"><span class="symbol">:set</span> noexpandtab</span><br><span class="line"><span class="symbol">:%retab</span></span><br></pre></td></tr></table></figure>
-<p>注意： <strong>加！是用于处理非空白字符之后的TAB，即所有的TAB，若不加！，则只处理行首的TAB</strong></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/备忘/">备忘</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-日报周报集合" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/20/日报周报集合/" class="article-date">
-  	<time datetime="2015-11-20T12:03:00.000Z" itemprop="datePublished">2015-11-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/20/日报周报集合/">日报周报集合</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="awesome-archive">awesome-archive</h1><blockquote>
-<p>A curated list of awesome archive</p>
-</blockquote>
-<h2 id="Daily">Daily</h2><ul>
-<li><p><a href="http://dailyjs.com/" target="_blank" rel="external">DailyJS</a></p>
-<blockquote>
-<p>A JavaScript Blog.</p>
-</blockquote>
-</li>
-<li><p><a href="http://daily.zhihu.com/" target="_blank" rel="external">知乎日报</a></p>
-</li>
-<li><p><a href="http://py.memect.com/" target="_blank" rel="external">Python日报</a></p>
-</li>
-<li><p><a href="http://ml.memect.com/" target="_blank" rel="external">机器学习日报</a></p>
-</li>
-<li><p><a href="http://web.memect.com/" target="_blank" rel="external">Web技术日报</a></p>
-</li>
-<li><p><a href="http://wanqu.co/" target="_blank" rel="external">湾区日报</a></p>
-</li>
-</ul>
-<h2 id="Weekly">Weekly</h2><ul>
-<li><p><a href="http://html5weekly.com/" target="_blank" rel="external">Html5 Weekly</a></p>
-<blockquote>
-<p>A free, once–weekly HTML5 and Web Platform technology roundup. CSS 3, Canvas, WebSockets, WebGL, Native Client, and more.</p>
-</blockquote>
-</li>
-<li><p><a href="http://css-weekly.com/" target="_blank" rel="external">Css Weekly</a></p>
-<blockquote>
-<p>A free, once–weekly e-mail roundup of css articles, tutorials, experiments and tools.</p>
-</blockquote>
-</li>
-<li><p><a href="http://javascriptweekly.com/" target="_blank" rel="external">JavaScript Weekly</a></p>
-<blockquote>
-<p>A free, once–weekly e-mail round-up of JavaScript news and articles.</p>
-</blockquote>
-</li>
-<li><p><a href="http://backboneweekly.com/" target="_blank" rel="external">Backbone Weekly</a></p>
-<blockquote>
-<p>The latest Backbone.js news, tips &amp; code delivered directly to your inbox.</p>
-</blockquote>
-</li>
-<li><p><a href="http://emberweekly.com/" target="_blank" rel="external">Ember Weekly</a></p>
-<blockquote>
-<p>The latest Ember.js news, tips &amp; code delivered directly to your inbox.</p>
-</blockquote>
-</li>
-<li><p><a href="http://dojoweekly.com/" target="_blank" rel="external">Dojo weekly</a></p>
-<blockquote>
-<p>Weekly links focused on Dojo Toolkit and anything useful to Dojo devs</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p><a href="http://nodeweekly.com/" target="_blank" rel="external">Node Weekly</a></p>
-<blockquote>
-<p>A free, once–weekly e-mail round-up of Node.js news and articles.</p>
-</blockquote>
-</li>
-<li><p><a href="https://www.npmjs.com/npm-weekly/" target="_blank" rel="external">Npm Weekly</a></p>
-<blockquote>
-<p>Npm is the package manager for JavaScript.</p>
-</blockquote>
-</li>
-<li><p><a href="http://www.phpweekly.com/" target="_blank" rel="external">Php Weekly</a></p>
-<blockquote>
-<p>A free once-a-week newsletter, featuring some great articles, news and blog posts.</p>
-</blockquote>
-</li>
-<li><p><a href="http://www.pythonweekly.com/" target="_blank" rel="external">Python Weekly</a></p>
-<blockquote>
-<p>A free weekly newsletter featuring curated news, articles, new releases, jobs etc related to Python.</p>
-</blockquote>
-</li>
-<li><p><a href="http://rubyweekly.com/" target="_blank" rel="external">Ruby Weekly</a></p>
-<blockquote>
-<p>A free, once–weekly e-mail round-up of Ruby news and articles.</p>
-</blockquote>
-</li>
-<li><p><a href="http://swiftweekly.com/" target="_blank" rel="external">Swift Weekly</a></p>
-<blockquote>
-<p>Code examples, tutorials, screencasts and much more to learn Apple’s new programming language.</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p><a href="http://www.golangweekly.com/" target="_blank" rel="external">Go Weekly</a></p>
-<blockquote>
-<p>An email newsletter about the Go programming language.</p>
-</blockquote>
-</li>
-<li><p><a href="http://dartweekly.com/" target="_blank" rel="external">Dart Weekly</a></p>
-<blockquote>
-<p>An occasional e-mail roundup of Dart news and articles.</p>
-</blockquote>
-</li>
-<li><p><a href="http://perlweekly.com/" target="_blank" rel="external">Perl Weekly</a></p>
-<blockquote>
-<p>A free, once a week e-mail round-up of hand-picked news and articles about Perl.</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><a href="http://androidweekly.net/" target="_blank" rel="external">Android Weekly</a><blockquote>
-<p>Android Weekly is a free newsletter that helps you to stay cutting-edge with your Android Development.</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><a href="https://iosdevweekly.com/" target="_blank" rel="external">iOS Dev Weekly</a><blockquote>
-<p>The Best of iOS Development, Delivered Weekly. Free.</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><a href="http://mobilewebweekly.co/" target="_blank" rel="external">Mobile Web Weekly</a><blockquote>
-<p>A weekly round-up of the releases, articles, and links that affect Web developers working on the mobile-facing Web.</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p><a href="http://dbweekly.com/" target="_blank" rel="external">DB Weekly</a></p>
-<blockquote>
-<p>A weekly round-up of database technology news and articles covering new developments, SQL, NoSQL, document databases, graph databases, and more.</p>
-</blockquote>
-</li>
-<li><p><a href="http://www.nosqlweekly.com/" target="_blank" rel="external">NoSQL Weekly</a></p>
-<blockquote>
-<p>A free weekly newsletter featuring curated news, articles, new releases, jobs etc related to NoSQL.</p>
-</blockquote>
-</li>
-<li><p><a href="http://redisweekly.com/" target="_blank" rel="external">Redis Weekly</a></p>
-<blockquote>
-<p>A free, once–weekly e-mail round-up of Redis news, articles, tools and libraries.</p>
-</blockquote>
-</li>
-<li><p><a href="http://postgresweekly.com/" target="_blank" rel="external">Postgres Weekly</a></p>
-<blockquote>
-<p>A free, once–weekly e-mail round-up of PostgreSQL news and articles.</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p><a href="http://webopsweekly.com/" target="_blank" rel="external">Web Operations Weekly</a></p>
-<blockquote>
-<p>A weekly newsletter on Web operations, infrastructure, performance, and tooling, from the browser down to the metal.</p>
-</blockquote>
-</li>
-<li><p><a href="http://blog.docker.com/docker-weekly-archives/" target="_blank" rel="external">Docker Weekly</a></p>
-<blockquote>
-<p>Docker Weekly Archives.</p>
-</blockquote>
-</li>
-<li><p><a href="http://webtoolsweekly.com/" target="_blank" rel="external">Webtools Weekly</a></p>
-<blockquote>
-<p>A once a week email with no spam, no rambling. Just pure awesome links to the best news and articles to hit the interweb during the week.</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p><a href="http://www.webdevweekly.com/" target="_blank" rel="external">Web Dev Weekly</a></p>
-<blockquote>
-<p>A weekly email of great links to some fantastic industry content.</p>
-</blockquote>
-</li>
-<li><p><a href="http://web-design-weekly.com/" target="_blank" rel="external">Web Design Weekly</a></p>
-<blockquote>
-<p>A forthcoming weekly round-up of Bitcoin and cryptocurrency news and articles.</p>
-</blockquote>
-</li>
-<li><p><a href="http://bitcoinweekly.com/" target="_blank" rel="external">Bitcoin Weekly</a></p>
-<blockquote>
-<p>A forthcoming weekly round-up of Bitcoin and cryptocurrency news and articles.</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p><a href="http://www.75team.com/weekly/" target="_blank" rel="external">奇舞周刊</a></p>
-<blockquote>
-<p>领略前端技术 阅读奇舞周刊.</p>
-</blockquote>
-</li>
-<li><p><a href="http://weekly.manong.io/" target="_blank" rel="external">码农周刊</a></p>
-<blockquote>
-<p>码农周刊是一份专为程序员打造的IT技术周刊.</p>
-</blockquote>
-</li>
-<li><p><a href="http://zhuanlan.zhihu.com/Weekly" target="_blank" rel="external">知乎周刊</a></p>
-<blockquote>
-<p>《知乎周刊》，在周末下午陪你喝一壶茶，或者在几个工作日的早上，陪你度过摇晃的无聊时光.</p>
-</blockquote>
-</li>
-<li><p><a href="http://weekly.segmentfault.com/" target="_blank" rel="external">SegmentFault Weekly</a></p>
-<blockquote>
-<p>SegmentFault每周精选.</p>
-</blockquote>
-</li>
-<li><p><a href="http://www.tuicool.com/mags" target="_blank" rel="external">编程狂人</a></p>
-<blockquote>
-<p>《编程狂人》周刊是专为IT人打造的行业技术周刊。 我们利用技术挖掘出那些高质量的文章，并通过人工加以筛选整理出来.</p>
-</blockquote>
-</li>
-<li><p><a href="http://www.tuicool.com/mags/design" target="_blank" rel="external">设计匠艺</a></p>
-<blockquote>
-<p>《设计匠艺》是一本电子版的有关设计方面的周刊.</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="Newsletter">Newsletter</h2><ul>
-<li><a href="http://www.ng-newsletter.com/" target="_blank" rel="external">ng Newsletter</a><blockquote>
-<p>The free, weekly newsletter of the best AngularJS content on the web.</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><a href="http://mysqlnewsletter.com/" target="_blank" rel="external">MySQL Newsletter</a><blockquote>
-<p>A Weekly Digest of MySQL Related News, Information and Summaries</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p><a href="http://www.hackernewsletter.com/" target="_blank" rel="external">Hacker Newsletter</a></p>
-<blockquote>
-<p>A weekly newsletter of the best articles on startups, technology, programming, and more. All links are curated by hand from the popular Hacker News site.</p>
-</blockquote>
-</li>
-<li><p><a href="http://responsivedesignweekly.com/" target="_blank" rel="external">Responsive Design Newsletter</a></p>
-<blockquote>
-<p>A free, once–weekly round-up of responsive design articles, tools, tips, tutorials and inspirational links.-</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="Collective">Collective</h2><ul>
-<li><p><a href="http://tympanus.net/codrops/collective/" target="_blank" rel="external">Codrops Collective</a></p>
-<blockquote>
-<p>The Collective features the latest news and resources from the web design &amp; web development community. </p>
-</blockquote>
-</li>
-<li><p><a href="http://subtlepatterns.com/" target="_blank" rel="external">Subtle Patterns</a></p>
-<blockquote>
-<p>Free textures for your next web project</p>
-</blockquote>
-</li>
-<li><p><a href="http://svg-news.com/" target="_blank" rel="external">SVG News</a></p>
-<blockquote>
-<p>SVG-news.com is the premier community bringing together SVG enthusiasts and actors.</p>
-</blockquote>
-</li>
-<li><p><a href="http://line25.com/" target="_blank" rel="external">Line25</a></p>
-<blockquote>
-<p>A place to share his web design ideas and inspiration through articles, tutorials and examples of stunning site designs. </p>
-</blockquote>
-</li>
-</ul>
-<p><strong>source:(<a href="https://github.com/a11y/awesome-archive" target="_blank" rel="external">https://github.com/a11y/awesome-archive</a>)</strong></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读/">阅读</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/阅读/">阅读</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-家乡的水" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2007/11/20/家乡的水/" class="article-date">
-  	<time datetime="2007-11-20T12:17:47.000Z" itemprop="datePublished">2007-11-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2007/11/20/家乡的水/">家乡的水</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="exporter-version" content="Evernote Mac 6.2 (452688)"><meta name="altitude" content="482.1695861816406"><meta name="author" content="杨珩"><meta name="created" content="2015-11-20 12:59:02 +0000"><meta name="latitude" content="30.54883241227225"><meta name="longitude" content="104.0690499427805"><meta name="source" content="desktop.mac"><meta name="updated" content="2015-11-20 13:00:17 +0000"><title>家乡的水</title></head><body><br><div>      提及家乡，总不免有点儿思念的味道，那正是家乡水的味道。对于一个处在内陆地区的小村庄，是看不到海的，没有海面的辽阔，海水的温存，却时不时能感受到海水的气息，还有水波此起彼伏，阳光洒在上面星星点点的感觉。记得几年前到天津游玩时，第一次看见海，就有一种似曾相识的感觉，那是小时候的我，经常能够感受得到的。</div><br><div><br></div><br><div>      小时候的我，不算很顽皮，却也并不是那种沉默寡言，不逢大事不出门的“小少爷”。我作为一个农家的小毛孩子，上树、下水、钓鱼、玩蛇（当然是水蛇）是常有的事儿，也许是天性对蛇有种厌恶以至畏惧的感觉，所以我也从来不主动去捉蛇、玩蛇，只是万不得已，为的是不逊色，也就经常“勇敢”地捉它来玩。但对于在水中游的水蛇，我是从来都不打扰的，我一直都认为水是一个清且淡的大舞台，以至于对它有种由衷的感情，也许正是这种感情的影响，我对水中的蛇也不再生厌，反倒时常为它婀娜多姿的表演而喝彩。可是一直以来令我十分遗憾的是，我从来都没有在曾养育我们好几代人的水库里寻到它的身影，若是在这个广阔的舞台上表演，那一定别有一番乐趣！</div><br><div><br></div><br><div>      其实，我所提到的那似海非海的，就是那水库，连同一条不宽不窄的水渠，把我们的整个村庄，都圈到了一个椭圆里，而太阳、月亮正如两个日夜交替的焦点，正好映在这清纯的水面上。田野与水库的交界处，是一块很大的空地，长着大片的水草，水草的颜色不是很青，正如天空般淡蓝。幼时的我总会想，也许这水的颜色不是天空映的，就是这水草映的，因为我在游水时，有时把整个身体短时间地沉到水底，不仅感受到了沙石的棱角，还有水草那痒痒的接触。提到游水，那可是我小时候最喜欢的，每逢夏日，本村的，无论老幼，都在太阳刚准备下山时来到这里游水。映着夕阳红彤彤的，不仅是水，还有那一张张淳朴的笑脸。而这游水过后，也可算是洗完了澡，这种洗澡的感受，远非在水龙头前淋浴可比的，在水里游着，心境早已超脱世外，早已通过这水，洗掉了尘世的忧愁与污垢。而在这儿游水的人谈笑的温情，又给这儿的水增添了另一样色彩。我小时候是在一所乡村小学读书，上学和放学的必经之路就是连接着我们村与水库对岸的堤，因此，也就是我最熟悉的地方。走在上面，左右都是广阔的水，丝丝凉风拂过脸颊，远比温和的海风来得静、来得清，还有一种清醇甘甜的感觉，深深吸一口气，这种味道，让全身都能感觉得到，这便是水的味道。我小时候的一个外号，就是由它得来的。在上学时，我总比别人早半个多小时出门，却总比别人迟到，因而就有人叫我“慢乌龟”，这个外号一直伴随着我，直到我离开这所小学后，才被我“强行取缔”。而这段经历，却给我人生划上了难忘的一笔。其实，这也足可见我对这库堤的喜爱程度，只是三四十米长，我却走了不止一小时。站在堤上的我，时常向着水的尽头望去，望得出神，也想了很多。水面上大群的水鸟似箭般冲下水里，接着就冲向蓝天，消失在那水的尽头。我当时挺羡慕她们能够品尝外面的世界，而我，却只能对着这水，向天独叹。也许正是这水，教会了我“奋斗”，给我指引了一条光明的路。因此，我对这水的感情，是一种特殊的感激与思念。</div><br><div><br></div><br><div>      艰苦的求学之路漫长而又无聊，也让我早早地离开了这片土地、这片水。所谓“一方水土养一方人。”我也坚信自己是它的子孙。如今虽久居城市，却总觉得有点烦闷的感觉。我的性格也变得有些孤僻了，心情也没有以前好了。但是前几个月听妈妈说了一件事，竟让我高兴了许久。“围绕着水库，要建设一个生态旅游度假区。”听妈妈这样说。这不禁使我想起童年的一些趣事。水库一年中绝大部分月份是枯水期，而留下来的空地变成了我们的乐园。和我年龄相仿的同伴很有几个，再加上比我大得不是太多的，就足一二十来个。傍晚时分，我们都提前去牵牛，顺便带上那“合资”购置的足球，在这个比几个足球场都要大的空地上来回地踢，那“挥汗如雨”的感觉，是如今的我很难感受得到的。虽然个个都是裸着一双小似香蕉嫩若仁的脚，但踩在石子上隐痛的感觉，早已抛之九霄云外了。况且接下来就是在水库中心洗一个痛快澡，心情愉悦的感觉更是升到了极点。如今，这里要建一个度假区，能够欣赏这美景的人一定很多吧！顺便让外乡人也来感受一下，也正可好好彰显一下它的价值。我离开它已有多年了，对它的感觉已近于朦胧，已很难畅快地勾画出家乡的景致了，这也许是我离它越来越远的缘故吧！    由于要补课，期待已久的暑假也就来得特别迟，长久以来积蓄在我心底的感觉，似快要喷发的火山，也如一汩汩清泉。刚离开学校回家才几天，我就乘上了回老家的汽车，也许,那种期待之情，已提前归属了那片水。</div><br><div><br></div><br><div>      回到这个有大半年没回过的家，首先当然是问候好久不见的奶奶。她是一个把一生都倾注在这块土地的人，大半辈子的经历使她对这块土地异常熟悉，她所倾注的感情也不是我所能比的。我想，对于而今家乡翻天覆地的变化，她一定比我更兴奋，更觉得欣慰。我向奶奶问好过后，首先谈到的并不是“水库改建”的事，而是我回来时看见的那条通往村里的水泥路，我打算用这来切入主题，让我们好好地高兴一次。可奶奶的话却使我有些懵了，她说：“以前这儿是泥巴路，总想有条好路走，可如今路是修了，小偷也来了，前不久就有好几家的牛被偷了。更可气的是，长在田里的稻谷和麦子，一夜就让人连杆带穗给割走喽！”我知道奶奶是一个很乐观的人活到七十多，身体还十分健康，就是乐观奏的效啊！可此时的她脸上却满脸感伤，让我感觉家乡的静彻底被大破了。而当我提及水库时，她的话让我彻底懵了。她说：“建度假区只是表象，办赌场才是真的，听说还是以办校的名义，用的是国家教育经费。”“听说”也许是流言，不可完全相信，但办赌场却非空穴来风，无须寻找证人和证物，来往赌博的人就是最好的明证。也许哪一天那里发生了冲突，那水不仅是傍晚，就是白天，也会有一抹夕阳色彩，是那种永远都不会变淡的色彩。我想，这水的纯也被彻底打破了。然而我还不料，曾经朴实的游水者，竟也会连人带水，托进这烂泥的深渊。也许是我对那蒙昧的水倾注了过多的感情，因此对这些人有了偏见，又或许，是好几年前水的清纯感染了我，自然而然激起了愤怒之情。</div><br><div><br></div><br><div>      站在家门口，我呆呆地极目远望，隐约地可以看到山的身影，听说那就是“峰山”，我想那里一定很繁荣吧！难道它也是通过这种途径繁荣的吗？近处就是这水，这片即将从蒙昧中走出来的水……</div><br><div><br></div><br><div>      不知不觉间，我来到了堤上，习习的凉风依旧吹个不停，浪涛也来得更猛，我举目向四周望去，寻找着我一直以来都想看到的东西——不是那貌似漂亮的幢幢别墅，也不是那移栽过来，貌似高大却似活非活的朽木，而是我小时候看到的那群群水鸟和那展翅高飞的感觉。久久地寻觅只是徒劳，它消失了，这片纯且静的水的真正主人，永远地消失了，换来的却是一群不懂得珍惜的“强盗”，还有和这些强盗狼狈为奸的“朴实者”。在“它们”的一番折腾下，这水的静、这水的纯早已消失，变得混沌不堪。而历史痛痒会真真切切地勾画出这一切，这混沌的水！</div><br><div><br></div><br><div>      天渐渐地暗，却不见明月和繁星，失落的感觉伴着凉风，随着激涛，扩散到了整个村庄，也浸透了我的心。“一方水土养一方人”，她还会养出同样“淳朴”的人吗？怀着对水的敬意，我不敢妄言。</div><br><div><br></div><br><div>      我依旧如多年前那样极目远眺，同样望不到尽头，此时我却觉得眼前的水很远很远，风中的苦涩味不知还是不是她的。我问风，她无言以对，我问水，她却装作听不见……</div><br><div><br></div><br><div>      也许，是我离她太远了吧，又或许，是她离我更远了吧！</div><br><div><br></div><br><div>                                                                                                                               二零零七年十一月记</div><br></body></html>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/家乡/">家乡</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/随笔/">随笔</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">
@@ -1117,7 +681,7 @@
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false
+		open_in_new: true
 	}
 </script>
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>

@@ -3,17 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Category: 随笔 | Keep It Simple, Stupid!</title>
+  <title>ElasticSearch的文档删除API | Keep It Simple, Stupid!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Top Gigger">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Keep It Simple, Stupid!">
-<meta property="og:url" content="http://www.bigg.top/categories/随笔/index.html">
+  <meta name="description" content="doc source(英文原文)
+
+
+这个删除接口允许基于具体的索引的id删除一个JSON类型的文档。接下来的例子是从一个index为twitter，type为tweet，并且id为1的文档中删除JSON文档:$ curl -XDELETE &apos;http://localhost:9200/twitter/tweet/1&apos;
+
+
+上述删除操作产生的结果为：&amp;#123;    &quot;found&quot; : true">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ElasticSearch的文档删除API">
+<meta property="og:url" content="http://www.bigg.top/2015/11/21/ElasticSearch的文档删除API/index.html">
 <meta property="og:site_name" content="Keep It Simple, Stupid!">
-<meta property="og:description" content="Top Gigger">
+<meta property="og:description" content="doc source(英文原文)
+
+
+这个删除接口允许基于具体的索引的id删除一个JSON类型的文档。接下来的例子是从一个index为twitter，type为tweet，并且id为1的文档中删除JSON文档:$ curl -XDELETE &apos;http://localhost:9200/twitter/tweet/1&apos;
+
+
+上述删除操作产生的结果为：&amp;#123;    &quot;found&quot; : true">
+<meta property="og:updated_time" content="2015-11-20T16:05:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Keep It Simple, Stupid!">
-<meta name="twitter:description" content="Top Gigger">
+<meta name="twitter:title" content="ElasticSearch的文档删除API">
+<meta name="twitter:description" content="doc source(英文原文)
+
+
+这个删除接口允许基于具体的索引的id删除一个JSON类型的文档。接下来的例子是从一个index为twitter，type为tweet，并且id为1的文档中删除JSON文档:$ curl -XDELETE &apos;http://localhost:9200/twitter/tweet/1&apos;
+
+
+上述删除操作产生的结果为：&amp;#123;    &quot;found&quot; : true">
   
     <link rel="alternative" href="/atom.xml" title="Keep It Simple, Stupid!" type="application/atom+xml">
   
@@ -208,57 +227,114 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-ElasticSearch的文档删除API" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2007" class="archive-year">2007</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2007/11/20/家乡的水/" class="archive-article-date">
-  	<time datetime="2007-11-20T12:17:47.000Z" itemprop="datePublished">Nov 20</time>
+    <div class="article-meta">
+      <a href="/2015/11/21/ElasticSearch的文档删除API/" class="article-date">
+  	<time datetime="2015-11-20T16:03:34.000Z" itemprop="datePublished">2015-11-21</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2007/11/20/家乡的水/">家乡的水</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ElasticSearch的文档删除API
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/家乡/">家乡</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/API/">API</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li></ul>
 	</div>
 
-          
+        
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/随笔/">随笔</a>
+	<a class="article-category-link" href="/categories/备忘/">备忘</a><a class="article-category-link" href="/categories/备忘/技术/">技术</a>
 	</div>
 
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="http://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete.html" target="_blank" rel="external">doc source(英文原文)</a></p>
+</blockquote>
+<ul>
+<li>这个删除接口允许基于具体的索引的<code>id</code>删除一个JSON类型的文档。接下来的例子是从一个index为<code>twitter</code>，type为<code>tweet</code>，并且id为<code>1</code>的文档中删除JSON文档:<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>curl -<span class="constant">XDELETE </span><span class="string">'http://localhost:9200/twitter/tweet/1'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上述删除操作产生的结果为：<br><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "<span class="attribute">found</span>" : <span class="value"><span class="literal">true</span></span>,</span><br><span class="line">    "<span class="attribute">_index</span>" : <span class="value"><span class="string">"twitter"</span></span>,</span><br><span class="line">    "<span class="attribute">_type</span>" : <span class="value"><span class="string">"tweet"</span></span>,</span><br><span class="line">    "<span class="attribute">_id</span>" : <span class="value"><span class="string">"1"</span></span>,</span><br><span class="line">    "<span class="attribute">_version</span>" : <span class="value"><span class="number">2</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="更新版本">更新版本</h3><p>每个文档建索引就是版本化。当删除了一个文档，<code>version</code>可以被指定以确保我们试图删除的相关文档确实被删除，它并没有在此期间被修改。对一个文档执行写的操作，包括删除，会引起版本的增加。</p>
+<h3 id="更新路由">更新路由</h3><p>当建索引时使用控制路由的能力，以确保删除一个文档，路由值也应该被提供。比如：<br><figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>curl -<span class="constant">XDELETE </span><span class="string">'http://localhost:9200/twitter/tweet/1?routing=kimchy'</span></span><br></pre></td></tr></table></figure></p>
+<p>以上操作将会删除id为1的tweet，但是会基于用户被路由。注意，发出路由不正确的删除，会导致文档没有被删除。<br>很多时候，当删除一个文档时，路由的值并不被知晓。对于这些情形，指定路由的映射作为请求，并且当路由值没有被指定时，这个删除将会被自动地散发到所有的分片中。</p>
+<h3 id="Parent">Parent</h3><p><code>parent</code>参数可以被设置，它将会基于和路由参数相同的设置。<br>注意删除父文档时不会自动删除它的子文档。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/11/20/Book-List-Share/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Book List &amp; Share</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'topbigg'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
 
 </div>
       <footer id="footer">
@@ -284,10 +360,10 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: true
 	}
 </script>
