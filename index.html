@@ -216,61 +216,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="vim缩进处理-VIM缩进处理-1" class="article article-type-vim缩进处理" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/20/VIM缩进处理-1/" class="article-date">
-  	<time datetime="2015-11-20T05:26:31.000Z" itemprop="datePublished">2015-11-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/20/VIM缩进处理-1/">VIM缩进处理</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-VIM缩进处理" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/11/20/VIM缩进处理/" class="article-date">
-  	<time datetime="2015-11-20T05:24:29.000Z" itemprop="datePublished">2015-11-20</time>
+  	<time datetime="2015-11-20T05:30:10.000Z" itemprop="datePublished">2015-11-20</time>
 </a>
     </div>
   
@@ -292,57 +242,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
+        <h1 id="VIM缩进处理方法">VIM缩进处理方法</h1><ul>
+<li>在.vimrc中添加以下代码后，重启vim即可实现按TAB产生4个空格：</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> ts=<span class="number">4</span> (ts是tabstop的缩写，设置TAB宽<span class="number">4</span>个空格)</span><br><span class="line"><span class="built_in">set</span> expandtab</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对于已保存的文件，可以使用下面的方法进行空格和TAB的替换：<ul>
+<li>TAB替换为空格</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">:set</span> ts=<span class="number">4</span></span><br><span class="line"><span class="symbol">:set</span> expandtab</span><br><span class="line"><span class="symbol">:%retab!</span></span><br></pre></td></tr></table></figure>
+<pre><code><span class="bullet">* </span>空格替换为TAB：
+</code></pre><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">：<span class="keyword">set</span> <span class="keyword">ts</span>=<span class="number">4</span></span><br><span class="line">：<span class="keyword">set</span> noexpandtab</span><br><span class="line">：%<span class="keyword">retab</span></span><br></pre></td></tr></table></figure>
+<p>注意： <strong>加！是用于处理非空白字符之后的TAB，即所有的TAB，若不加！，则只处理行首的TAB</strong></p>
 
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="vim缩进处理-备忘记录" class="article article-type-vim缩进处理" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/20/备忘记录/" class="article-date">
-  	<time datetime="2015-11-20T03:27:55.000Z" itemprop="datePublished">2015-11-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/20/备忘记录/">备忘记录</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
       
     </div>
     
