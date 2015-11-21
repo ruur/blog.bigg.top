@@ -124,7 +124,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/ElasticSearch/" style="font-size: 20px;">ElasticSearch</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/书/" style="font-size: 10px;">书</a> <a href="/tags/书签/" style="font-size: 10px;">书签</a> <a href="/tags/图书馆/" style="font-size: 10px;">图书馆</a> <a href="/tags/家乡/" style="font-size: 10px;">家乡</a> <a href="/tags/梦/" style="font-size: 10px;">梦</a> <a href="/tags/阅读/" style="font-size: 10px;">阅读</a>
+						<a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/Crontab/" style="font-size: 10px;">Crontab</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/ElasticSearch/" style="font-size: 20px;">ElasticSearch</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PySpark/" style="font-size: 10px;">PySpark</a> <a href="/tags/Spark/" style="font-size: 10px;">Spark</a> <a href="/tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/书/" style="font-size: 10px;">书</a> <a href="/tags/书签/" style="font-size: 10px;">书签</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/图书馆/" style="font-size: 10px;">图书馆</a> <a href="/tags/家乡/" style="font-size: 10px;">家乡</a> <a href="/tags/山/" style="font-size: 10px;">山</a> <a href="/tags/梦/" style="font-size: 10px;">梦</a> <a href="/tags/读后感/" style="font-size: 10px;">读后感</a> <a href="/tags/阅读/" style="font-size: 10px;">阅读</a>
 					</div>
 				</section>
 				
@@ -210,6 +210,267 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Crontab的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/22/Crontab的使用/" class="article-date">
+  	<time datetime="2015-11-21T16:52:19.000Z" itemprop="datePublished">2015-11-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/22/Crontab的使用/">Crontab的使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言">前言</h2><p>crontab是Unix和Linux用于设置周期性被执行的指令，是互联网很常用的技术，很多任务都会设置在crontab循环执行，如果不使用crontab，那么任务就是常驻程序，这对你的程序要求比较高，一个要求你的程序是24*7小时不宕机，一个是要求你的调度程序比较可靠，实际工作中，90%的程序都没有必要花这么多时间和精力去解决上面的两个问题的，只需要写好自己的业务逻辑，通过crond这个工业级程序去调度就行了，crond的可靠性，健壮性，大家应该是毫无疑问的。</p>
+<h2 id="crontab简易入门">crontab简易入门</h2><ul>
+<li><p><code>crontab -e</code>  直接编辑crontab文件</p>
+</li>
+<li><p>默认情况下，编辑完crontab跳出后立即执行crontab任务。也可以创建crontab文件，然后执行：</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="title">crontab</span> crontab_file</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>也可以创建crontab任务。</p>
+<h2 id="crontab的语法">crontab的语法</h2><figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">crontab [-<span class="keyword">u</span> username] [-<span class="keyword">l</span>|-<span class="keyword">e</span>|-r]</span><br></pre></td></tr></table></figure>
+<p>选项与参数：</p>
+<figure class="highlight haml"><table><tr><td class="code"><pre><span class="line">-<span class="ruby">u  ：只有 root 才能进行这个任务，亦即帮其他使用者创建/移除 crontab 工作排程；</span><br><span class="line"></span>-<span class="ruby">e  ：编辑 crontab 的工作内容</span><br><span class="line"></span>-<span class="ruby">l  ：查阅 crontab 的工作内容</span><br><span class="line"></span>-<span class="ruby">r  ：移除所有的 crontab 的工作内容，若仅要移除一项，请用 -e 去编辑</span></span><br></pre></td></tr></table></figure>
+<p>清空使用者目前的 crontab:</p>
+<figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">crontab -<span class="literal">r</span></span><br><span class="line">crontab -<span class="keyword">l</span></span><br><span class="line"><span class="keyword">no</span> crontab <span class="keyword">for</span> blue</span><br></pre></td></tr></table></figure>
+<p>如果你想删除当前用户的某一个crontab任务，那么使用crontab -e进入编辑器，再删除对应的任务。</p>
+<h2 id="crontab的限制">crontab的限制</h2><ul>
+<li><p>/etc/cron.allow：将可以使用 crontab 的帐号写入其中，若不在这个文件内的使用者则不可使用 crontab</p>
+</li>
+<li><p>/etc/cron.deny：将不可以使用 crontab 的帐号写入其中，若未记录到这个文件当中的使用者，就可以使用 crontab </p>
+</li>
+</ul>
+<p>以优先顺序来说，<code>/etc/cron.allow</code> 比 <code>/etc/cron.deny</code> 要优先， 而判断上面，这两个文件只选择一个来限制而已，因此，建议你只要保留一个即可， 免得影响自己在配置上面的判断！一般来说，系统默认是保留 /etc/cron.deny ， 你可以将不想让他运行 crontab 的那个使用者写入 /etc/cron.deny 当中，一个帐号一行！</p>
+<h3 id="crontab的格式讲解">crontab的格式讲解</h3><ul>
+<li>每项工作 (每行) 的格式都是具有六个栏位，这六个栏位的意义为(0和7都代表星期天)</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">代表意义    分钟         小时       日期        月份         周       命令</span><br><span class="line">数字范围    <span class="number">0</span>-<span class="number">59</span>         <span class="number">0</span>-<span class="number">23</span>       <span class="number">1</span>-<span class="number">31</span>        <span class="number">1</span>-<span class="number">12</span>         <span class="number">0</span>-<span class="number">7</span>    command</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>*</code>代表任何时刻</li>
+<li><code>,</code>代表分隔时段的意思</li>
+<li><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="number">0</span> <span class="number">3</span>,<span class="number">6</span> * * * command</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>-</code>代表一段时间范围内</p>
+</li>
+<li><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="number">20</span> <span class="number">8</span>-<span class="number">12</span> * * * command</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>/n</code>表示每隔n单位间隔</p>
+</li>
+<li><figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line"><span class="keyword">*</span>/5 <span class="keyword">*</span> <span class="keyword">*</span> <span class="keyword">*</span> <span class="keyword">*</span> command</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用 <code>*</code> 与 <code>/6</code> 来搭配，也可以写成 <code>0-59/6</code> </p>
+</li>
+</ul>
+<p>注意： <strong>周与日月不可同时并存</strong></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Crontab/">Crontab</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/备忘/">备忘</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Spark学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/22/Spark学习/" class="article-date">
+  	<time datetime="2015-11-21T16:08:13.000Z" itemprop="datePublished">2015-11-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/22/Spark学习/">Spark学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="https://spark.apache.org/docs/latest/api/python/pyspark.html" target="_blank" rel="external">PySpark</a><br> PySpark is the Python API for Spark.</p>
+</blockquote>
+<ul>
+<li><a href="https://spark.apache.org/docs/latest/api/python/pyspark.sql.html" target="_blank" rel="external">pyspark.sql module</a></li>
+<li><a href="https://spark.apache.org/docs/latest/api/python/pyspark.streaming.html" target="_blank" rel="external">pyspark.streaming module</a></li>
+<li><a href="https://spark.apache.org/docs/latest/api/python/pyspark.ml.html" target="_blank" rel="external">pyspark.ml package</a></li>
+<li><a href="https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html" target="_blank" rel="external">pyspark.mllib package</a></li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PySpark/">PySpark</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spark/">Spark</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/备忘/">备忘</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-ElasticSearch的优化方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/22/ElasticSearch的优化方法/" class="article-date">
+  	<time datetime="2015-11-21T16:00:18.000Z" itemprop="datePublished">2015-11-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/22/ElasticSearch的优化方法/">ElasticSearch的优化方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="多线程">多线程</h3><p>多线程程序插入，可以根据服务器情况开启多个线程index<br>速度可以提高n倍, n&gt;=2 (这个是在脚本层面，受限于ES的性能)</p>
+<h3 id="考虑取消replias">考虑取消replias</h3><p>如果有多台机器，可以以每台设置n个shards的方式，根据业务情况，可以考虑取消replias （待数据入完再开启副本）<br><figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">curl -XPUT 'http://10.1.<span class="keyword">*</span>.<span class="keyword">*</span>:9200/dw-search/' -d '&#123;</span><br><span class="line">    <span class="string">"settings"</span> : &#123;</span><br><span class="line">        <span class="string">"number_of_shards"</span> : 20,</span><br><span class="line">        <span class="string">"number_of_replicas"</span> : 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;'</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>这里设置20个shards, 复制为0，如果需要replicas，可以完成index后再修改为replicas&gt;=1</li>
+<li>原文：<a href="http://www.elasticsearch.org/guide/reference/api/admin-indices-create-index.html" target="_blank" rel="external">http://www.elasticsearch.org/guide/reference/api/admin-indices-create-index.html</a></li>
+</ul>
+<h3 id="提高ES占用内存">提高ES占用内存</h3><ul>
+<li>内存适当调大，调大后，最小和最大一样，避免GC, 并根据机器情况，设置内存大小，</li>
+<li><p>修改文件：elasticsearch-1.5.0/bin/elasticsearch.in.sh</p>
+<h3 id="减少shard刷新间隔">减少shard刷新间隔</h3><figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">curl -XPUT 'http://10.1.<span class="keyword">*</span>.<span class="keyword">*</span>:9200/dw-search/_settings' -d '&#123;</span><br><span class="line">    <span class="string">"index"</span> : &#123;</span><br><span class="line">        <span class="string">"refresh_interval"</span> : <span class="string">"-1"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;'</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>完成bulk插入后再修改为初始值</p>
+<figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">curl -XPUT 'http://10.1.<span class="keyword">*</span>.<span class="keyword">*</span>:9200/dw-search/_settings' -d '&#123;</span><br><span class="line">    <span class="string">"index"</span> : &#123;</span><br><span class="line">        <span class="string">"refresh_interval"</span> : <span class="string">"1s"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;'</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="设置一个shard的段segment最大数">设置一个shard的段segment最大数</h3><ul>
+<li>可以减少段文件数，提高查询速度<br>curl -XPOST ‘<a href="http://10.1.*.*:9200/dw-search/_optimize?max_num_segments=5" target="_blank" rel="external">http://10.1.*.*:9200/dw-search/_optimize?max_num_segments=5</a>‘<br>注意：有时候可能需要多次执行</li>
+<li>原文：<a href="http://www.elasticsearch.org/guide/reference/api/admin-indices-update-settings.html" target="_blank" rel="external">http://www.elasticsearch.org/guide/reference/api/admin-indices-update-settings.html</a></li>
+<li>原文：<a href="http://www.elasticsearch.org/guide/reference/index-modules/merge.html" target="_blank" rel="external">http://www.elasticsearch.org/guide/reference/index-modules/merge.html</a></li>
+</ul>
+<h3 id="去掉mapping中_all域">去掉mapping中_all域</h3><ul>
+<li>Index中默认会有_all的域，这个会给查询带来方便，但是会增加索引时间和索引尺寸<br>“_all” : {“enabled” : false}</li>
+<li>原文：<a href="http://www.elasticsearch.org/guide/reference/mapping/all-field.html" target="_blank" rel="external">http://www.elasticsearch.org/guide/reference/mapping/all-field.html</a><figure class="highlight autoit"><table><tr><td class="code"><pre><span class="line">curl -XPOST <span class="string">'http://10.1.*.*:9200/dw-search/pt_normal/_mapping'</span> --data-<span class="built_in">binary</span> <span class="constant">@pt_normal_properties</span>.mapping</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="设置source为压缩模式或者disable">设置source为压缩模式或者disable</h3><ul>
+<li>compress=true这个能大大减少index的尺寸</li>
+<li>disable将直接没有_source域</li>
+</ul>
+<h3 id="增加merge-policy-merge_factor数">增加merge.policy.merge_factor数</h3><ul>
+<li>设置merge.policy.merge_factor到30，初始是10</li>
+<li>增加这个数需要更多的内存，bulk index可以调大这个值.</li>
+<li>如果是即时索引，应该调小这个值</li>
+<li>原文：<a href="http://www.elasticsearch.org/guide/reference/index-modules/merge.html" target="_blank" rel="external">http://www.elasticsearch.org/guide/reference/index-modules/merge.html</a></li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/优化/">优化</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/备忘/">备忘</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-Tmux命令及快捷键" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1219,6 +1480,70 @@
 
 
   
+    <article id="post-《远山》-严阵" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/11/22/《远山》-严阵/" class="article-date">
+  	<time datetime="2014-11-21T16:11:47.000Z" itemprop="datePublished">2014-11-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/22/《远山》-严阵/">《远山》--严阵</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>不要攫取。攫取会使你失落。失落你要攫取的东西和你的自我。不要占有。占有会使你虚无。你得到的将不再是你所需要的，而你也不再是过去的你。</p>
+</blockquote>
+<p>–严阵的《远山》已经读过无数遍，然而其中蕴含的道理和它那令人神往的幻境至今仍深深地吸引着我。“人生的一览无余是多么地让人追索永世，而又是多么地令人感到可怕，那种终会演变为幻灭的可怕。”的确，感性强的人的思想是无比丰富的，而太强之人往往会更容易伤害到自己。其实，让自己远离这些，回归理性主导的世界，时而在数学的世界里徘徊，时而行走于科学技能的小道上，也许也是一种不错的选择。追求心灵的宁静，不要让内心里美好的东西太多的曝露于阳光之下，仅属于我们自己内心的欣喜我们应独自享受，同样，这样的痛苦也需我们独自承担并消融，这既是对他人的尊重，也是对自我的尊重。</p>
+<hr>
+<p>在我的窗口的远方，有一片远山。<br>晴朗的日子，当我在晨光澄明间第一次打开窗子，我会发现，它是在一片无边的浅蓝中的一缕静悄无声的黛青，而在黄昏，当我最后一次把窗子关上以前，映入我眼帘的它，却是一道朦胧的神秘的金紫。<br>当风雨如晦云飞雾涌时，我虽然看不见它的影子，但我知道，此时此刻，它依旧守在那儿，默默地静静地无怨无悔地守在那儿，因此在看不到它的时候，从一直涌到我窗口的风云的气息中，我却能感受到它的另一种美，那种既无黛青又无金紫而却是不用任何一种颜色表达的看起来并不存在而实际上却分明存在着的令人只能无穷的意会到的那种美，那种并不为人发现的美。<br>我惊异于初冬季节的一个早晨，当一夜小雪过后，在片云不见的蓝空的边际出现一弧柔美的银色曲线的时候，我真的惊愕于它的绝妙，那在万花纷谢千树凋零的季节显现出的那种无与伦比的淡薄和不可思议的清远。<br>我曾到过黄山。我曾不止一次的领略过它的奇松，怪石，云海，温泉。但当我在天都峰上远眺的时候，我只感觉到它的高峻；当我在百步云梯上攀援的时候，我只感觉到它的险峭；当我在散花坞前徘徊的时候，我只感觉到它的秀奇；当我在桃花溪畔漫步的时候，我也只能感觉到它的晶莹而又婉转的匆匆。<br>我曾到过泰山。我曾膜拜过它的古老和庄严。但当我进入经石峪的时候，我只感觉到它的至尊。当我看到壶天阁历代刻石的时候，我只感觉到它的至显。在我很小的时候，我就记得，在我出生的那个小山村里，人们筑屋，必定要在一块泰山石上刻上“泰山石敢当”几个大字，并将它砌在新屋的石墙上，因而当我穿过中天门看到那组成泰山的每一座巨大的石壁时，我只能很自然的感觉到它的至贵。而当我登上日观峰一览众山的时候，我也只能感觉到它在千古冥冥之中的那种至高。<br>我曾到过庐山。我曾欣赏过牯岭的亦山亦市。我曾流连过花径的亦画亦诗。我曾在它的仙人洞纵览云飞，倾听那来自锦绣谷的悠悠天籁之音。我也曾登上含鄱亭，看鄱阳湖光苍茫秋水。<br>我曾到过峨眉。我曾在清音阁的月光下凭栏静听那泉水的如泣如诉。我曾在万年祠的秋林中看那白云的忽近忽远。我曾在洗象池的山道上看山花的自开自落。我也曾直薄峨眉金顶，观蜀汉之浩荡烟云。<br>可是，我所有见到的，却只能是见到，我所有登临的却只能是登临。于是我在兴高采烈过后，渐渐感悟到：人生的一览无余是多么地让人追索永世，而又是多么地令人感到可怕，那种终会演变为幻灭的可怕。<br>而远山却不。<br>它永远不会让那一抹黛青变成真实的绿树芳草，它永远不会让那一道金紫变成具体的茅屋桑田，它也不会让那迷蒙的烟雨变成可以听得到可以看得见的小溪和池塘，它同样也不会让那一弧银白变为崚嶒岩石和凋落的园林。<br>那是你吗？我从我的打开的窗口远远地望着它。没有握手。没有面对面的看清脸上的每一条深深纹络。它给予我的，只是一个遥远的模糊的微笑，只能靠朝思暮想去补充的微笑。<br>那是你吗？它有时只是蓦然一现随之便销声匿迹。我知道它是在它在的地方，但我希望那云，那雨，那雾，那雪，一直笼罩着它，只给我留下一个第六感觉的空间。<br>那是你吗？只和我隔着一扇门，只和我隔着一条路，只和我隔着一个季节，只和我隔着一片云也似的流年。我依稀地看到你。没有点头，没有摇头。没有承袭，也没有许诺。那是永远的不缺陷的缺陷。那是永远的不圆满的圆满。<br>我曾经试图走近你，可是我又不能走近你，因为，当我真的走近你，真的走进你的你，我便会失去你留给我的那一缕黛青，那一缕永远无法解释的黛青。我也会失去你展示在我视觉里的那一抹金紫，那一抹永远无法猜测的金紫。同时，我也会永远失去你隐入轻云薄雾中留给我的那种感觉，那种虚虚的无比神秘的，仿佛在初雪轻掩的荒原上留下的一行似曾相识的时而消失时而复现的脚印的感觉。我也会失去你出现在天际线上的那一弧银白，那永远也无法代替的至纯至圣的梦影。<br>我曾经试图走近你，可是我又不能走近你，因为，当我真的走近你，你那远山的所有的魅力，便会在了无距离了无界限之间顷刻消失，而与此同时，你便不再是我的远山，而却是别人的远山了。<br>距离是什么？距离是一个空间。距离是什么？距离是一个时间。因此，人只有在一定的时空之外，才有可能领略到某种真正的完美，并有可能将它永远收入你终生的美丽的珍藏之中。<br>不要攫取。攫取会使你失落。失落你要攫取的东西和你的自我。不要占有。占有会使你虚无。你得到的将不再是你所需要的，而你也不再是过去的你。<br>永远可望而不可及。永远可想而不可依。永远可疏而不可密。永远可寄而不可系。<br>在我的窗口的远方，有一片远山。<br>尽管流年似水，世事沧桑，各种各样的时尚的追求，穿梭于朝朝暮暮的红灯绿酒之间，我却越来越感到，我那一片远山的美丽和我那一片远山的富有。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/山/">山</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读后感/">读后感</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/随笔/">随笔</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-家乡的水" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1245,7 +1570,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="exporter-version" content="Evernote Mac 6.2 (452688)"><meta name="altitude" content="482.1695861816406"><meta name="author" content="杨珩"><meta name="created" content="2015-11-20 12:59:02 +0000"><meta name="latitude" content="30.54883241227225"><meta name="longitude" content="104.0690499427805"><meta name="source" content="desktop.mac"><meta name="updated" content="2015-11-20 13:00:17 +0000"><title>家乡的水</title></head><body><br><div>      提及家乡，总不免有点儿思念的味道，那正是家乡水的味道。对于一个处在内陆地区的小村庄，是看不到海的，没有海面的辽阔，海水的温存，却时不时能感受到海水的气息，还有水波此起彼伏，阳光洒在上面星星点点的感觉。记得几年前到天津游玩时，第一次看见海，就有一种似曾相识的感觉，那是小时候的我，经常能够感受得到的。</div><br><div><br></div><br><div>      小时候的我，不算很顽皮，却也并不是那种沉默寡言，不逢大事不出门的“小少爷”。我作为一个农家的小毛孩子，上树、下水、钓鱼、玩蛇（当然是水蛇）是常有的事儿，也许是天性对蛇有种厌恶以至畏惧的感觉，所以我也从来不主动去捉蛇、玩蛇，只是万不得已，为的是不逊色，也就经常“勇敢”地捉它来玩。但对于在水中游的水蛇，我是从来都不打扰的，我一直都认为水是一个清且淡的大舞台，以至于对它有种由衷的感情，也许正是这种感情的影响，我对水中的蛇也不再生厌，反倒时常为它婀娜多姿的表演而喝彩。可是一直以来令我十分遗憾的是，我从来都没有在曾养育我们好几代人的水库里寻到它的身影，若是在这个广阔的舞台上表演，那一定别有一番乐趣！</div><br><div><br></div><br><div>      其实，我所提到的那似海非海的，就是那水库，连同一条不宽不窄的水渠，把我们的整个村庄，都圈到了一个椭圆里，而太阳、月亮正如两个日夜交替的焦点，正好映在这清纯的水面上。田野与水库的交界处，是一块很大的空地，长着大片的水草，水草的颜色不是很青，正如天空般淡蓝。幼时的我总会想，也许这水的颜色不是天空映的，就是这水草映的，因为我在游水时，有时把整个身体短时间地沉到水底，不仅感受到了沙石的棱角，还有水草那痒痒的接触。提到游水，那可是我小时候最喜欢的，每逢夏日，本村的，无论老幼，都在太阳刚准备下山时来到这里游水。映着夕阳红彤彤的，不仅是水，还有那一张张淳朴的笑脸。而这游水过后，也可算是洗完了澡，这种洗澡的感受，远非在水龙头前淋浴可比的，在水里游着，心境早已超脱世外，早已通过这水，洗掉了尘世的忧愁与污垢。而在这儿游水的人谈笑的温情，又给这儿的水增添了另一样色彩。我小时候是在一所乡村小学读书，上学和放学的必经之路就是连接着我们村与水库对岸的堤，因此，也就是我最熟悉的地方。走在上面，左右都是广阔的水，丝丝凉风拂过脸颊，远比温和的海风来得静、来得清，还有一种清醇甘甜的感觉，深深吸一口气，这种味道，让全身都能感觉得到，这便是水的味道。我小时候的一个外号，就是由它得来的。在上学时，我总比别人早半个多小时出门，却总比别人迟到，因而就有人叫我“慢乌龟”，这个外号一直伴随着我，直到我离开这所小学后，才被我“强行取缔”。而这段经历，却给我人生划上了难忘的一笔。其实，这也足可见我对这库堤的喜爱程度，只是三四十米长，我却走了不止一小时。站在堤上的我，时常向着水的尽头望去，望得出神，也想了很多。水面上大群的水鸟似箭般冲下水里，接着就冲向蓝天，消失在那水的尽头。我当时挺羡慕她们能够品尝外面的世界，而我，却只能对着这水，向天独叹。也许正是这水，教会了我“奋斗”，给我指引了一条光明的路。因此，我对这水的感情，是一种特殊的感激与思念。</div><br><div><br></div><br><div>      艰苦的求学之路漫长而又无聊，也让我早早地离开了这片土地、这片水。所谓“一方水土养一方人。”我也坚信自己是它的子孙。如今虽久居城市，却总觉得有点烦闷的感觉。我的性格也变得有些孤僻了，心情也没有以前好了。但是前几个月听妈妈说了一件事，竟让我高兴了许久。“围绕着水库，要建设一个生态旅游度假区。”听妈妈这样说。这不禁使我想起童年的一些趣事。水库一年中绝大部分月份是枯水期，而留下来的空地变成了我们的乐园。和我年龄相仿的同伴很有几个，再加上比我大得不是太多的，就足一二十来个。傍晚时分，我们都提前去牵牛，顺便带上那“合资”购置的足球，在这个比几个足球场都要大的空地上来回地踢，那“挥汗如雨”的感觉，是如今的我很难感受得到的。虽然个个都是裸着一双小似香蕉嫩若仁的脚，但踩在石子上隐痛的感觉，早已抛之九霄云外了。况且接下来就是在水库中心洗一个痛快澡，心情愉悦的感觉更是升到了极点。如今，这里要建一个度假区，能够欣赏这美景的人一定很多吧！顺便让外乡人也来感受一下，也正可好好彰显一下它的价值。我离开它已有多年了，对它的感觉已近于朦胧，已很难畅快地勾画出家乡的景致了，这也许是我离它越来越远的缘故吧！    由于要补课，期待已久的暑假也就来得特别迟，长久以来积蓄在我心底的感觉，似快要喷发的火山，也如一汩汩清泉。刚离开学校回家才几天，我就乘上了回老家的汽车，也许,那种期待之情，已提前归属了那片水。</div><br><div><br></div><br><div>      回到这个有大半年没回过的家，首先当然是问候好久不见的奶奶。她是一个把一生都倾注在这块土地的人，大半辈子的经历使她对这块土地异常熟悉，她所倾注的感情也不是我所能比的。我想，对于而今家乡翻天覆地的变化，她一定比我更兴奋，更觉得欣慰。我向奶奶问好过后，首先谈到的并不是“水库改建”的事，而是我回来时看见的那条通往村里的水泥路，我打算用这来切入主题，让我们好好地高兴一次。可奶奶的话却使我有些懵了，她说：“以前这儿是泥巴路，总想有条好路走，可如今路是修了，小偷也来了，前不久就有好几家的牛被偷了。更可气的是，长在田里的稻谷和麦子，一夜就让人连杆带穗给割走喽！”我知道奶奶是一个很乐观的人活到七十多，身体还十分健康，就是乐观奏的效啊！可此时的她脸上却满脸感伤，让我感觉家乡的静彻底被大破了。而当我提及水库时，她的话让我彻底懵了。她说：“建度假区只是表象，办赌场才是真的，听说还是以办校的名义，用的是国家教育经费。”“听说”也许是流言，不可完全相信，但办赌场却非空穴来风，无须寻找证人和证物，来往赌博的人就是最好的明证。也许哪一天那里发生了冲突，那水不仅是傍晚，就是白天，也会有一抹夕阳色彩，是那种永远都不会变淡的色彩。我想，这水的纯也被彻底打破了。然而我还不料，曾经朴实的游水者，竟也会连人带水，托进这烂泥的深渊。也许是我对那蒙昧的水倾注了过多的感情，因此对这些人有了偏见，又或许，是好几年前水的清纯感染了我，自然而然激起了愤怒之情。</div><br><div><br></div><br><div>      站在家门口，我呆呆地极目远望，隐约地可以看到山的身影，听说那就是“峰山”，我想那里一定很繁荣吧！难道它也是通过这种途径繁荣的吗？近处就是这水，这片即将从蒙昧中走出来的水……</div><br><div><br></div><br><div>      不知不觉间，我来到了堤上，习习的凉风依旧吹个不停，浪涛也来得更猛，我举目向四周望去，寻找着我一直以来都想看到的东西——不是那貌似漂亮的幢幢别墅，也不是那移栽过来，貌似高大却似活非活的朽木，而是我小时候看到的那群群水鸟和那展翅高飞的感觉。久久地寻觅只是徒劳，它消失了，这片纯且静的水的真正主人，永远地消失了，换来的却是一群不懂得珍惜的“强盗”，还有和这些强盗狼狈为奸的“朴实者”。在“它们”的一番折腾下，这水的静、这水的纯早已消失，变得混沌不堪。而历史痛痒会真真切切地勾画出这一切，这混沌的水！</div><br><div><br></div><br><div>      天渐渐地暗，却不见明月和繁星，失落的感觉伴着凉风，随着激涛，扩散到了整个村庄，也浸透了我的心。“一方水土养一方人”，她还会养出同样“淳朴”的人吗？怀着对水的敬意，我不敢妄言。</div><br><div><br></div><br><div>      我依旧如多年前那样极目远眺，同样望不到尽头，此时我却觉得眼前的水很远很远，风中的苦涩味不知还是不是她的。我问风，她无言以对，我问水，她却装作听不见……</div><br><div><br></div><br><div>      也许，是我离她太远了吧，又或许，是她离我更远了吧！</div><br><div><br></div><br><div>                                                                                                                               二零零七年十一月记</div><br></body></html>
+        <p>提及家乡，总不免有点儿思念的味道，那正是家乡水的味道。对于一个处在内陆地区的小村庄，是看不到海的，没有海面的辽阔，海水的温存，却时不时能感受到海水的气息，还有水波此起彼伏，阳光洒在上面星星点点的感觉。记得几年前到天津游玩时，第一次看见海，就有一种似曾相识的感觉，那是小时候的我，经常能够感受得到的。<br>小时候的我，不算很顽皮，却也并不是那种沉默寡言，不逢大事不出门的“小少爷”。我作为一个农家的小毛孩子，上树、下水、钓鱼、玩蛇（当然是水蛇）是常有的事儿，也许是天性对蛇有种厌恶以至畏惧的感觉，所以我也从来不主动去捉蛇、玩蛇，只是万不得已，为的是不逊色，也就经常“勇敢”地捉它来玩。但对于在水中游的水蛇，我是从来都不打扰的，我一直都认为水是一个清且淡的大舞台，以至于对它有种由衷的感情，也许正是这种感情的影响，我对水中的蛇也不再生厌，反倒时常为它婀娜多姿的表演而喝彩。可是一直以来令我十分遗憾的是，我从来都没有在曾养育我们好几代人的水库里寻到它的身影，若是在这个广阔的舞台上表演，那一定别有一番乐趣！<br>其实，我所提到的那似海非海的，就是那水库，连同一条不宽不窄的水渠，把我们的整个村庄，都圈到了一个椭圆里，而太阳、月亮正如两个日夜交替的焦点，正好映在这清纯的水面上。田野与水库的交界处，是一块很大的空地，长着大片的水草，水草的颜色不是很青，正如天空般淡蓝。幼时的我总会想，也许这水的颜色不是天空映的，就是这水草映的，因为我在游水时，有时把整个身体短时间地沉到水底，不仅感受到了沙石的棱角，还有水草那痒痒的接触。提到游水，那可是我小时候最喜欢的，每逢夏日，本村的，无论老幼，都在太阳刚准备下山时来到这里游水。映着夕阳红彤彤的，不仅是水，还有那一张张淳朴的笑脸。而这游水过后，也可算是洗完了澡，这种洗澡的感受，远非在水龙头前淋浴可比的，在水里游着，心境早已超脱世外，早已通过这水，洗掉了尘世的忧愁与污垢。而在这儿游水的人谈笑的温情，又给这儿的水增添了另一样色彩。我小时候是在一所乡村小学读书，上学和放学的必经之路就是连接着我们村与水库对岸的堤，因此，也就是我最熟悉的地方。走在上面，左右都是广阔的水，丝丝凉风拂过脸颊，远比温和的海风来得静、来得清，还有一种清醇甘甜的感觉，深深吸一口气，这种味道，让全身都能感觉得到，这便是水的味道。我小时候的一个外号，就是由它得来的。在上学时，我总比别人早半个多小时出门，却总比别人迟到，因而就有人叫我“慢乌龟”，这个外号一直伴随着我，直到我离开这所小学后，才被我“强行取缔”。而这段经历，却给我人生划上了难忘的一笔。其实，这也足可见我对这库堤的喜爱程度，只是三四十米长，我却走了不止一小时。站在堤上的我，时常向着水的尽头望去，望得出神，也想了很多。水面上大群的水鸟似箭般冲下水里，接着就冲向蓝天，消失在那水的尽头。我当时挺羡慕她们能够品尝外面的世界，而我，却只能对着这水，向天独叹。也许正是这水，教会了我“奋斗”，给我指引了一条光明的路。因此，我对这水的感情，是一种特殊的感激与思念。<br>艰苦的求学之路漫长而又无聊，也让我早早地离开了这片土地、这片水。所谓“一方水土养一方人。”我也坚信自己是它的子孙。如今虽久居城市，却总觉得有点烦闷的感觉。我的性格也变得有些孤僻了，心情也没有以前好了。但是前几个月听妈妈说了一件事，竟让我高兴了许久。“围绕着水库，要建设一个生态旅游度假区。”听妈妈这样说。这不禁使我想起童年的一些趣事。水库一年中绝大部分月份是枯水期，而留下来的空地变成了我们的乐园。和我年龄相仿的同伴很有几个，再加上比我大得不是太多的，就足一二十来个。傍晚时分，我们都提前去牵牛，顺便带上那“合资”购置的足球，在这个比几个足球场都要大的空地上来回地踢，那“挥汗如雨”的感觉，是如今的我很难感受得到的。虽然个个都是裸着一双小似香蕉嫩若仁的脚，但踩在石子上隐痛的感觉，早已抛之九霄云外了。况且接下来就是在水库中心洗一个痛快澡，心情愉悦的感觉更是升到了极点。如今，这里要建一个度假区，能够欣赏这美景的人一定很多吧！顺便让外乡人也来感受一下，也正可好好彰显一下它的价值。我离开它已有多年了，对它的感觉已近于朦胧，已很难畅快地勾画出家乡的景致了，这也许是我离它越来越远的缘故吧！    由于要补课，期待已久的暑假也就来得特别迟，长久以来积蓄在我心底的感觉，似快要喷发的火山，也如一汩汩清泉。刚离开学校回家才几天，我就乘上了回老家的汽车，也许,那种期待之情，已提前归属了那片水。<br>回到这个有大半年没回过的家，首先当然是问候好久不见的奶奶。她是一个把一生都倾注在这块土地的人，大半辈子的经历使她对这块土地异常熟悉，她所倾注的感情也不是我所能比的。我想，对于而今家乡翻天覆地的变化，她一定比我更兴奋，更觉得欣慰。我向奶奶问好过后，首先谈到的并不是“水库改建”的事，而是我回来时看见的那条通往村里的水泥路，我打算用这来切入主题，让我们好好地高兴一次。可奶奶的话却使我有些懵了，她说：“以前这儿是泥巴路，总想有条好路走，可如今路是修了，小偷也来了，前不久就有好几家的牛被偷了。更可气的是，长在田里的稻谷和麦子，一夜就让人连杆带穗给割走喽！”我知道奶奶是一个很乐观的人活到七十多，身体还十分健康，就是乐观奏的效啊！可此时的她脸上却满脸感伤，让我感觉家乡的静彻底被大破了。而当我提及水库时，她的话让我彻底懵了。她说：“建度假区只是表象，办赌场才是真的，听说还是以办校的名义，用的是国家教育经费。”“听说”也许是流言，不可完全相信，但办赌场却非空穴来风，无须寻找证人和证物，来往赌博的人就是最好的明证。也许哪一天那里发生了冲突，那水不仅是傍晚，就是白天，也会有一抹夕阳色彩，是那种永远都不会变淡的色彩。我想，这水的纯也被彻底打破了。然而我还不料，曾经朴实的游水者，竟也会连人带水，托进这烂泥的深渊。也许是我对那蒙昧的水倾注了过多的感情，因此对这些人有了偏见，又或许，是好几年前水的清纯感染了我，自然而然激起了愤怒之情。<br>站在家门口，我呆呆地极目远望，隐约地可以看到山的身影，听说那就是“峰山”，我想那里一定很繁荣吧！难道它也是通过这种途径繁荣的吗？近处就是这水，这片即将从蒙昧中走出来的水……<br>不知不觉间，我来到了堤上，习习的凉风依旧吹个不停，浪涛也来得更猛，我举目向四周望去，寻找着我一直以来都想看到的东西——不是那貌似漂亮的幢幢别墅，也不是那移栽过来，貌似高大却似活非活的朽木，而是我小时候看到的那群群水鸟和那展翅高飞的感觉。久久地寻觅只是徒劳，它消失了，这片纯且静的水的真正主人，永远地消失了，换来的却是一群不懂得珍惜的“强盗”，还有和这些强盗狼狈为奸的“朴实者”。在“它们”的一番折腾下，这水的静、这水的纯早已消失，变得混沌不堪。而历史痛痒会真真切切地勾画出这一切，这混沌的水！<br>天渐渐地暗，却不见明月和繁星，失落的感觉伴着凉风，随着激涛，扩散到了整个村庄，也浸透了我的心。“一方水土养一方人”，她还会养出同样“淳朴”的人吗？怀着对水的敬意，我不敢妄言。<br>我依旧如多年前那样极目远眺，同样望不到尽头，此时我却觉得眼前的水很远很远，风中的苦涩味不知还是不是她的。我问风，她无言以对，我问水，她却装作听不见……<br>也许，是我离她太远了吧，又或许，是她离我更远了吧！<br>                                                   二零零七年十一月记</p>
+
       
     </div>
     
@@ -1306,7 +1632,8 @@
         <blockquote>
 <p>自在飞花轻似梦 无边丝雨细如愁~~~</p>
 </blockquote>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="exporter-version" content="Evernote Mac 6.2 (452688)"><meta name="altitude" content="484.9486694335938"><meta name="author" content="杨珩"><meta name="created" content="2015-11-21 15:46:52 +0000"><meta name="latitude" content="30.53905409911489"><meta name="longitude" content="104.0826056176433"><meta name="source" content="desktop.mac"><meta name="updated" content="2015-11-21 15:47:08 +0000"><title>ww</title></head><body><br><div>        一次次在雨后的操场上徘徊，一遍遍在窗前等待，梦幻的日子在经历风雨的洗礼后，也显得愈加迷人了。只是，那缕饱尝甘霖的阳光何时才能温暖我的心田？曾经听说梦是有翅膀的，只在雨后的曙光下才展翅翱翔，因为只有这刻的人间才愈显温厚，愈加自由。漫山的野草不用为了逃避现实而卑躬屈膝，饱尝甘霖的野花也不再拘于羞涩，开始向新生的世界问好。只有那颗心，还在无声地哭泣，等到的，是迷茫，还是万类霜天竞自由的景象，抑或是生命之舟对未来的祈盼？</div><br><div><br></div><br><div>       不是江南水乡，门前自然看不到潺潺的溪流，听不到溪水欢快的吟唱。然而，取而代之的有荷塘，菡萏并不多，却能够敞开心扉拥抱月儿的影，一分一毫都不落下。微风拂过，没有太多的声响，却仍可涤荡起淡淡的涟漪。月光在水面轻快地浮动，菡萏的叶儿也不安分起来，只是偶尔有几片花落，就像载着月儿的梦。轻如烟，淡如云，游弋于天地之间，又好似承载着梦得魂灵。</div><br><div><br></div><br><div>      门前，窗外。在没有月儿映衬的夜晚总有些暗淡，仅仅能在微弱的灯光下看到荷叶的背影，在雨点的冲刷下显得更加娇人与可爱，只是缺少一分心灵的慰藉。菡萏之美在于它不拘的魂灵，我这才明白为何朝阳会如此迷人，只因它经受过雨中的抗击，那种自由奔放的，看似无知的抗击。</div><br><div><br></div><br><div>      此时此刻，我的心好似演变成了一朵野花。风，是它的风火轮；雨，是它的无忧船。在天上，地下，甚至是滑行在水面上，它都不会停歇地向前··向前。也许古代文人墨客笔下的“自在飞花”也难逃天地的束缚吧，毕竟梦由心生，心为天地所造，真正逃离尘世间万物的梦也应该没有吧······</div><br><div><br></div><br><div>      “撑一支长篙，向清水更清处漫溯，满载一船星辉，在星辉斑斓里放歌。”游弋于更清之处，载满一船星辉返航。掀开一幕迷幻的梦境，撑起一双薄且透明的翅膀，伴着漫天的野花，来感触生命的真知，激奋的力量！</div><br><div><br></div><br><div>                                                                                                                                                            二零零六年九月记</div><br></body></html>
+<hr>
+<p>一次次在雨后的操场上徘徊，一遍遍在窗前等待，梦幻的日子在经历风雨的洗礼后，也显得愈加迷人了。只是，那缕饱尝甘霖的阳光何时才能温暖我的心田？曾经听说梦是有翅膀的，只在雨后的曙光下才展翅翱翔，因为只有这刻的人间才愈显温厚，愈加自由。漫山的野草不用为了逃避现实而卑躬屈膝，饱尝甘霖的野花也不再拘于羞涩，开始向新生的世界问好。只有那颗心，还在无声地哭泣，等到的，是迷茫，还是万类霜天竞自由的景象，抑或是生命之舟对未来的祈盼？<br>不是江南水乡，门前自然看不到潺潺的溪流，听不到溪水欢快的吟唱。然而，取而代之的有荷塘，菡萏并不多，却能够敞开心扉拥抱月儿的影，一分一毫都不落下。微风拂过，没有太多的声响，却仍可涤荡起淡淡的涟漪。月光在水面轻快地浮动，菡萏的叶儿也不安分起来，只是偶尔有几片花落，就像载着月儿的梦。轻如烟，淡如云，游弋于天地之间，又好似承载着梦得魂灵。<br>门前，窗外。在没有月儿映衬的夜晚总有些暗淡，仅仅能在微弱的灯光下看到荷叶的背影，在雨点的冲刷下显得更加娇人与可爱，只是缺少一分心灵的慰藉。菡萏之美在于它不拘的魂灵，我这才明白为何朝阳会如此迷人，只因它经受过雨中的抗击，那种自由奔放的，看似无知的抗击。<br>此时此刻，我的心好似演变成了一朵野花。风，是它的风火轮；雨，是它的无忧船。在天上，地下，甚至是滑行在水面上，它都不会停歇地向前··向前。也许古代文人墨客笔下的“自在飞花”也难逃天地的束缚吧，毕竟梦由心生，心为天地所造，真正逃离尘世间万物的梦也应该没有吧······<br>“撑一支长篙，向清水更清处漫溯，满载一船星辉，在星辉斑斓里放歌。”游弋于更清之处，载满一船星辉返航。掀开一幕迷幻的梦境，撑起一双薄且透明的翅膀，伴着漫天的野花，来感触生命的真知，激奋的力量！<br>                                                      二零零六年九月记</p>
 
       
     </div>
