@@ -494,13 +494,20 @@
 </li>
 </ul>
 <h3 id="设置一个shard的段segment最大数">设置一个shard的段segment最大数</h3><ul>
-<li>可以减少段文件数，提高查询速度<br>curl -XPOST ‘<a href="http://10.1.*.*:9200/dw-search/_optimize?max_num_segments=5" target="_blank" rel="external">http://10.1.*.*:9200/dw-search/_optimize?max_num_segments=5</a>‘<br>注意：有时候可能需要多次执行</li>
+<li>可以减少段文件数，提高查询速度<figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">curl -XPOST 'http://10.1.<span class="keyword">*</span>.<span class="keyword">*</span>:9200/dw-search/_optimize?max_num_segments=5'</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意：有时候可能需要多次执行</p>
+<ul>
 <li>原文：<a href="http://www.elasticsearch.org/guide/reference/api/admin-indices-update-settings.html" target="_blank" rel="external">http://www.elasticsearch.org/guide/reference/api/admin-indices-update-settings.html</a></li>
 <li>原文：<a href="http://www.elasticsearch.org/guide/reference/index-modules/merge.html" target="_blank" rel="external">http://www.elasticsearch.org/guide/reference/index-modules/merge.html</a></li>
 </ul>
 <h3 id="去掉mapping中_all域">去掉mapping中_all域</h3><ul>
-<li>Index中默认会有_all的域，这个会给查询带来方便，但是会增加索引时间和索引尺寸<br>“_all” : {“enabled” : false}</li>
-<li>原文：<a href="http://www.elasticsearch.org/guide/reference/mapping/all-field.html" target="_blank" rel="external">http://www.elasticsearch.org/guide/reference/mapping/all-field.html</a><figure class="highlight autoit"><table><tr><td class="code"><pre><span class="line">curl -XPOST <span class="string">'http://10.1.*.*:9200/dw-search/pt_normal/_mapping'</span> --data-<span class="built_in">binary</span> <span class="constant">@pt_normal_properties</span>.mapping</span><br></pre></td></tr></table></figure>
+<li><p>Index中默认会有_all的域，这个会给查询带来方便，但是会增加索引时间和索引尺寸</p>
+<figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="string">"_all"</span> : &#123;<span class="string">"enabled"</span> : <span class="literal">false</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>原文：<a href="http://www.elasticsearch.org/guide/reference/mapping/all-field.html" target="_blank" rel="external">http://www.elasticsearch.org/guide/reference/mapping/all-field.html</a></p>
+<figure class="highlight autoit"><table><tr><td class="code"><pre><span class="line">curl -XPOST <span class="string">'http://10.1.*.*:9200/dw-search/pt_normal/_mapping'</span> --data-<span class="built_in">binary</span> <span class="constant">@pt_normal_properties</span>.mapping</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="设置source为压缩模式或者disable">设置source为压缩模式或者disable</h3><ul>
