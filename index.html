@@ -478,15 +478,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="多线程">多线程</h3><p>多线程程序插入，可以根据服务器情况开启多个线程index<br>速度可以提高n倍, n&gt;=2 (这个是在脚本层面，受限于ES的性能)</p>
+        <h3 id="多线程">多线程</h3><p>多线程程序插入，可以根据服务器情况开启多个线程<code>index</code><br>速度可以提高n倍, <code>n&gt;=2</code> (这个是在脚本层面，受限于ES的性能)</p>
 <h3 id="考虑取消replias">考虑取消replias</h3><p>如果有多台机器，可以以每台设置n个shards的方式，根据业务情况，可以考虑取消replias （待数据入完再开启副本）<br><figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">curl -XPUT 'http://10.1.<span class="keyword">*</span>.<span class="keyword">*</span>:9200/dw-search/' -d '&#123;</span><br><span class="line">    <span class="string">"settings"</span> : &#123;</span><br><span class="line">        <span class="string">"number_of_shards"</span> : 20,</span><br><span class="line">        <span class="string">"number_of_replicas"</span> : 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;'</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li>这里设置20个shards, 复制为0，如果需要replicas，可以完成index后再修改为replicas&gt;=1</li>
+<li>这里设置<code>20个shards</code>, 复制为<code>0</code>，如果需要<code>replicas</code>，可以完成<code>index</code>后再修改为<code>replicas&gt;=1</code></li>
 <li>原文：<a href="http://www.elasticsearch.org/guide/reference/api/admin-indices-create-index.html" target="_blank" rel="external">http://www.elasticsearch.org/guide/reference/api/admin-indices-create-index.html</a></li>
 </ul>
 <h3 id="提高ES占用内存">提高ES占用内存</h3><ul>
-<li>内存适当调大，调大后，最小和最大一样，避免GC, 并根据机器情况，设置内存大小，</li>
-<li><p>修改文件：elasticsearch-1.5.0/bin/elasticsearch.in.sh</p>
+<li>内存适当调大，调大后，使最小和最大一样，避免GC, 并根据机器情况，设置内存大小，</li>
+<li><p>修改文件：<code>elasticsearch-1.5.0/bin/elasticsearch.in.sh</code></p>
 <h3 id="减少shard刷新间隔">减少shard刷新间隔</h3><figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">curl -XPUT 'http://10.1.<span class="keyword">*</span>.<span class="keyword">*</span>:9200/dw-search/_settings' -d '&#123;</span><br><span class="line">    <span class="string">"index"</span> : &#123;</span><br><span class="line">        <span class="string">"refresh_interval"</span> : <span class="string">"-1"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;'</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>完成bulk插入后再修改为初始值</p>
@@ -503,7 +503,7 @@
 <li>原文：<a href="http://www.elasticsearch.org/guide/reference/index-modules/merge.html" target="_blank" rel="external">http://www.elasticsearch.org/guide/reference/index-modules/merge.html</a></li>
 </ul>
 <h3 id="去掉mapping中_all域">去掉mapping中_all域</h3><ul>
-<li><p>Index中默认会有_all的域，这个会给查询带来方便，但是会增加索引时间和索引尺寸</p>
+<li><p>Index中默认会有<code>_all</code>的域，这个会给查询带来方便，但是会增加索引时间和索引尺寸</p>
 <figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line"><span class="string">"_all"</span> : &#123;<span class="string">"enabled"</span> : <span class="literal">false</span>&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>原文：<a href="http://www.elasticsearch.org/guide/reference/mapping/all-field.html" target="_blank" rel="external">http://www.elasticsearch.org/guide/reference/mapping/all-field.html</a></p>
@@ -511,12 +511,12 @@
 </li>
 </ul>
 <h3 id="设置source为压缩模式或者disable">设置source为压缩模式或者disable</h3><ul>
-<li>compress=true这个能大大减少index的尺寸</li>
-<li>disable将直接没有_source域</li>
+<li><code>compress=true</code>这个能大大减少<code>index</code>的尺寸</li>
+<li><code>disable</code>将直接没有<code>_source</code>域</li>
 </ul>
 <h3 id="增加merge-policy-merge_factor数">增加merge.policy.merge_factor数</h3><ul>
-<li>设置merge.policy.merge_factor到30，初始是10</li>
-<li>增加这个数需要更多的内存，bulk index可以调大这个值.</li>
+<li>设置<code>merge.policy.merge_factor</code>到<code>30</code>，初始是<code>10</code></li>
+<li>增加这个数需要更多的内存，<code>bulk index</code>可以调大这个值.</li>
 <li>如果是即时索引，应该调小这个值</li>
 <li>原文：<a href="http://www.elasticsearch.org/guide/reference/index-modules/merge.html" target="_blank" rel="external">http://www.elasticsearch.org/guide/reference/index-modules/merge.html</a></li>
 </ul>
