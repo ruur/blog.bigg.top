@@ -124,7 +124,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/Crontab/" style="font-size: 10px;">Crontab</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/ElasticSearch/" style="font-size: 20px;">ElasticSearch</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PySpark/" style="font-size: 10px;">PySpark</a> <a href="/tags/Spark/" style="font-size: 10px;">Spark</a> <a href="/tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/书/" style="font-size: 10px;">书</a> <a href="/tags/书签/" style="font-size: 10px;">书签</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/图书馆/" style="font-size: 10px;">图书馆</a> <a href="/tags/家乡/" style="font-size: 10px;">家乡</a> <a href="/tags/山/" style="font-size: 10px;">山</a> <a href="/tags/梦/" style="font-size: 10px;">梦</a> <a href="/tags/翻译/" style="font-size: 20px;">翻译</a> <a href="/tags/读后感/" style="font-size: 10px;">读后感</a> <a href="/tags/阅读/" style="font-size: 10px;">阅读</a>
+						<a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/Crontab/" style="font-size: 10px;">Crontab</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/ElasticSearch/" style="font-size: 20px;">ElasticSearch</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PySpark/" style="font-size: 10px;">PySpark</a> <a href="/tags/Spark/" style="font-size: 10px;">Spark</a> <a href="/tags/Tmux/" style="font-size: 10px;">Tmux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/书/" style="font-size: 10px;">书</a> <a href="/tags/书签/" style="font-size: 10px;">书签</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/图书馆/" style="font-size: 10px;">图书馆</a> <a href="/tags/家乡/" style="font-size: 10px;">家乡</a> <a href="/tags/山/" style="font-size: 10px;">山</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/梦/" style="font-size: 10px;">梦</a> <a href="/tags/翻译/" style="font-size: 15px;">翻译</a> <a href="/tags/读后感/" style="font-size: 10px;">读后感</a> <a href="/tags/阅读/" style="font-size: 10px;">阅读</a>
 					</div>
 				</section>
 				
@@ -210,6 +210,104 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-elasticsearch的python增删查改实例分析" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/29/elasticsearch的python增删查改实例分析/" class="article-date">
+  	<time datetime="2015-11-29T15:18:51.000Z" itemprop="datePublished">2015-11-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/29/elasticsearch的python增删查改实例分析/">elasticsearch的python增删查改实例分析</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ElasticSearch的Python增删查改实例分析">ElasticSearch的Python增删查改实例分析</h2><blockquote>
+<p>在实际生产中，经常会遇到ES的增删查改问题。ES是采用RESTAPI，有时也会遇到需要Python脚本来进行ES的增删改查。（为了安全起见，影藏并删除了部分操作，代码仅供参考）建议只用ES做查询和统计，如果没有特别强烈地需求或强迫症，不要轻易使用删除和更新功能。</p>
+</blockquote>
+<h4 id="ES登陆连接（Python）">ES登陆连接（Python）</h4><ul>
+<li>ES的部署请查看相关文档，我这里就不在赘叙。提醒，官方建议ES的在<code>60G</code>以上内存的环境下运行，如果你的服务器的内存是<code>16G</code>，建议至少需要4台机器。</li>
+<li>ES连接到服务器比较容易，如下：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> elasticsearch</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ES</span><span class="params">(object)</span>:</span></span><br><span class="line"><span class="decorator">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connect_host</span><span class="params">(cls)</span>:</span></span><br><span class="line">        hosts=[&#123;<span class="string">"host"</span>: <span class="string">"xx.xxx.x.xx"</span>&#125;,</span><br><span class="line">                &#123;<span class="string">"host"</span>: <span class="string">"xx.xxx.x.xx"</span>&#125;,</span><br><span class="line">                &#123;<span class="string">"host"</span>: <span class="string">"xx.xxx.x.xx"</span>&#125;,</span><br><span class="line">                &#123;<span class="string">"host"</span>: <span class="string">"xx.xxx.x.xx"</span>&#125;,]</span><br><span class="line">        es = elasticsearch.Elasticsearch(</span><br><span class="line">            hosts,</span><br><span class="line">            sniff_on_start=<span class="keyword">True</span>,</span><br><span class="line">            sniff_on_connection_fail=<span class="keyword">True</span>,</span><br><span class="line">            sniffer_timeout=<span class="number">600</span></span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span> es</span><br></pre></td></tr></table></figure>
+<h4 id="查询操作">查询操作</h4><ul>
+<li>通过对RESTAPI的改造，可以很容易实现查询功能。如下，实现了对一个domain相关doc的查询，筛选条件包括起止时间，数据排列顺序和限制查询数据的个数。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">def es_query(domain="", <span class="operator"><span class="keyword">start</span>=<span class="keyword">None</span>, <span class="keyword">end</span>=<span class="keyword">None</span>, <span class="keyword">reverse</span>=<span class="literal">False</span>, limit_cnt=<span class="number">20</span>, <span class="keyword">category</span>=<span class="number">0</span>):</span><br><span class="line">    es = ES.connect_host()</span><br><span class="line">    <span class="keyword">now</span> = datetime.datetime.<span class="keyword">now</span>()</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">reverse</span>:</span><br><span class="line">        <span class="keyword">order</span> = <span class="string">"desc"</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">order</span> = <span class="string">"asc"</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">start</span>:</span><br><span class="line">        <span class="keyword">start</span> = <span class="keyword">now</span> - datetime.timedelta(weeks=<span class="number">2000</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">end</span>:</span><br><span class="line">        <span class="keyword">end</span> = <span class="keyword">now</span></span><br><span class="line">    range_body = &#123;</span><br><span class="line">        <span class="string">"range"</span>: &#123;</span><br><span class="line">            <span class="string">"time"</span>: &#123;</span><br><span class="line">                <span class="string">"gte"</span>: <span class="keyword">start</span>,</span><br><span class="line">                <span class="string">"lte"</span>: <span class="keyword">end</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    and_list = [range_body]</span><br><span class="line">    domain_body = &#123;</span><br><span class="line">        <span class="string">"term"</span>: &#123;</span><br><span class="line">            <span class="string">"domain"</span>: <span class="keyword">domain</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    category_body = &#123;</span><br><span class="line">        <span class="string">"term"</span>: &#123;</span><br><span class="line">            <span class="string">"category"</span>: <span class="keyword">category</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">domain</span>:</span><br><span class="line">        and_list.append(domain_body)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">category</span>:</span><br><span class="line">        and_list.append(category_body)</span><br><span class="line">    q_body = &#123;</span><br><span class="line">        <span class="string">"size"</span>: limit_cnt,</span><br><span class="line">        <span class="string">"sort"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">"time"</span>: &#123;</span><br><span class="line">                    <span class="string">"order"</span>: <span class="keyword">order</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        <span class="string">"query"</span>: &#123;</span><br><span class="line">            <span class="string">"filtered"</span>: &#123;</span><br><span class="line">                <span class="string">"query"</span>: &#123;<span class="string">"matchAll"</span>: &#123;&#125;&#125;,</span><br><span class="line">                <span class="string">"filter"</span>: &#123;</span><br><span class="line">                    <span class="string">"and"</span>: and_list</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    res = es.<span class="keyword">search</span>(<span class="keyword">body</span>=q_body)</span><br><span class="line">    ret = []</span><br><span class="line">    <span class="keyword">for</span> hit <span class="keyword">in</span> res[<span class="string">"hits"</span>][<span class="string">"hits"</span>]:</span><br><span class="line">        <span class="keyword">value</span> = &#123;&#125;</span><br><span class="line">        src = hit[<span class="string">"_source"</span>]</span><br><span class="line">        <span class="keyword">if</span> src:</span><br><span class="line">            try:</span><br><span class="line">                the_time = src[<span class="string">"time"</span>]</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">len</span>(the_time) &lt; <span class="number">20</span>:</span><br><span class="line">                    <span class="keyword">value</span>[<span class="string">"time"</span>] = datetime.datetime.strptime(the_time, <span class="string">"%Y-%m-%dT%H:%M:%S"</span>)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">value</span>[<span class="string">"time"</span>] = datetime.datetime.strptime(the_time, <span class="string">"%Y-%m-%dT%H:%M:%S.%f"</span>)</span><br><span class="line">                ret.append(<span class="keyword">value</span>)</span><br><span class="line">            <span class="keyword">except</span> <span class="keyword">Exception</span> <span class="keyword">as</span> <span class="keyword">e</span>:</span><br><span class="line">                print <span class="keyword">str</span>(<span class="keyword">e</span>)</span><br><span class="line">                ret = []</span><br><span class="line">                print <span class="string">"Query xxxxx data failed!"</span></span><br><span class="line">    <span class="keyword">return</span> ret</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>其中，<code>reverse</code>表示数据排列的顺序，<code>linit_cnt</code>表示限制数量。其中涉及<code>range</code>,<code>sort</code>,<code>size</code>,<code>filter</code>,<code>and</code>等来执行<code>es.search</code>操作。最后一个<code>for</code>循环是一个取数据的过程。</li>
+<li>在实际应用过程中，对于一个复杂的查询，第一次操作失败率很高，如果查询结果有几千个，第一次的<code>query</code>查询到的<code>success</code>个数通常只有<code>1/3</code>左右。当然，当你用该查询条件再次查询时，可以瞬间得到完全成功的结果，所以在你对查询成功个数要求比较高的情况下，建议多次发起请求，这样可以得到比较完整的结果。</li>
+</ul>
+<h4 id="删除操作">删除操作</h4><ul>
+<li>ES的查询分为按<code>index</code>删除和按<code>doc</code>删除。按<code>index</code>查询相对比较容易理解，即删除该索引下的所有数据，删除之后该索引就不存在了。但是有时我们会碰到一些按照<code>doc</code>的情况，即按照一定的<code>query</code>条件查询到相关的doc,然后删除相关的所有记录。ES官方不推荐进行这种操作，而且还有一定的失败率。如果一定需要这方面的功能，证明你的数据不适合用ES进行存储。</li>
+<li>由于我当时对ES的认识不够，把大量的数据存储在了ES，因此对<code>doc</code>的删除操作需求比较大，写了一个删除操作功能（仅供参考，不建议使用，如果需要删除，建议存储数据之前设计好数据结构,方便以<code>index</code>为单位删除）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">es_delete</span><span class="params">(domain, m_type=<span class="string">"xxxx"</span>)</span>:</span></span><br><span class="line">    m_data = &#123;</span><br><span class="line">        <span class="string">"query"</span>: &#123;</span><br><span class="line">            <span class="string">"query_string"</span>: &#123;</span><br><span class="line">                <span class="string">"query"</span>: <span class="string">"domain: %s AND type: %s"</span> % (domain, m_type)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    data = json.dumps(m_data)</span><br><span class="line">    request = urllib2.Request(QUERY_URI, data)</span><br><span class="line">    request.get_method = <span class="keyword">lambda</span>: <span class="string">"DELETE"</span></span><br><span class="line">    urllib2.urlopen(request)</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"Deleted the data!"</span></span><br></pre></td></tr></table></figure>
+<h4 id="更新操作">更新操作</h4><ul>
+<li>ES不适合对大量的数据（doc）进行修改，与删除一样，这是官方极度不推荐的。当然，按照一定的查询条件更新某些<code>doc</code>也是可以实现的。如果你和我一样，遇到了比较极端的情形或是一个强迫症患者。请组合以上两个操作，写一个比较复杂的<code>query</code>执行删除操作，然后把新的数据（doc）插入到对应的索引和类型中。</li>
+</ul>
+<h4 id="插入操作">插入操作</h4><ul>
+<li>插入操作是ES的最基本操作，ES提供了最基本的插入功能，ES入库时需要批量的插入操作。举个简单的插入操作例子：</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">es = ES.<span class="function"><span class="title">connect_host</span><span class="params">()</span></span></span><br><span class="line">es.<span class="function"><span class="title">index</span><span class="params">(index=data_index, doc_type=<span class="string">"xxxx"</span>, body=data, request_timeout=<span class="number">10000</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>其中，<code>index</code>表示索引，<code>doc_type</code>表示数据类型，<code>body</code>表示具体的<code>doc</code>数据，最后一个参数表示超时时间。如果是日志文件或其它记录内容，建议<code>index</code>设置为时间或时间的组合体，如<code>log_2015_11_29</code>。数据类型即当前索引下数据的分类名称，可以把当前的数据按照不同的类型分类，同时也方便了查询，查询时可以很方便的过滤需要的类型。</li>
+</ul>
+<h4 id="相关参考">相关参考</h4><blockquote>
+<p>之前时间比较闲，翻译了部分与Python相关的ElasticSearch文档，如有疑问，欢迎回复评论，相互讨论学习。</p>
+</blockquote>
+<ul>
+<li><a href="http://bigg.top/2015/11/22/ElasticSearch的优化方法/" target="_blank" rel="external">ElasticSearch的优化方法</a></li>
+<li><a href="http://bigg.top/2015/11/21/ElasticSearch的文档删除API/" target="_blank" rel="external">ElasticSearch的文档删除API</a></li>
+<li><a href="http://bigg.top/2015/11/20/ElasticSearch通过查询删除文档的API/" target="_blank" rel="external">ElasticSearch通过查询删除文档的API</a></li>
+<li><a href="http://bigg.top/2015/11/20/ElasticSearch的更新索引设置/" target="_blank" rel="external">ElasticSearch的更新索引设置</a></li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/笔记/">笔记</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-Django安装MySQL问题" class="article article-type-post" itemscope itemprop="blogPost">
   
