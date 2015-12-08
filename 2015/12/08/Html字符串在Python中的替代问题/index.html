@@ -17,7 +17,7 @@ File &quot;xxx_xxx_email.py&quot;, line 93, in get_email_content    return conte
 在Python中，有时需要替换HTML格式的字符串，由于%(name)s是替换字符串的，所以%被占用，有时会遇到以下问题
 
 File &quot;xxx_xxx_email.py&quot;, line 93, in get_email_content    return content % stat    ValueError: unsupported format character &apos;;&apos; (0x3b">
-<meta property="og:updated_time" content="2015-12-08T01:41:13.000Z">
+<meta property="og:updated_time" content="2015-12-08T01:44:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Html字符串在Python中的替代问题">
 <meta name="twitter:description" content="问题描述
@@ -264,7 +264,7 @@ File &quot;xxx_xxx_email.py&quot;, line 93, in get_email_content    return conte
 <li>在Python中，有时需要替换HTML格式的字符串，由于%(name)s是替换字符串的，所以%被占用，有时会遇到以下问题</li>
 </ul>
 <figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">File <span class="string">"xxx_xxx_email.py"</span>, <span class="built_in">line</span> <span class="number">93</span>, <span class="operator">in</span> get_email_content</span><br><span class="line">    <span class="constant">return</span> content % stat</span><br><span class="line">    ValueError: unsupported <span class="built_in">format</span> <span class="keyword">character</span> <span class="string">';'</span> (<span class="number">0x3b</span>) <span class="keyword">at</span> index <span class="number">414</span></span><br></pre></td></tr></table></figure>
-<ul>
+<h3 id="解决方案">解决方案</h3><ul>
 <li>这是因为HTML代码中出现了<code>%</code>, 如<code>90%</code>这些参数在HTML中很常见，需要改成<code>90%%</code>, 这样就可以识别而不报错了</li>
 </ul>
 

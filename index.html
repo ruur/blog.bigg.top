@@ -241,7 +241,7 @@
 <li>在Python中，有时需要替换HTML格式的字符串，由于%(name)s是替换字符串的，所以%被占用，有时会遇到以下问题</li>
 </ul>
 <figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">File <span class="string">"xxx_xxx_email.py"</span>, <span class="built_in">line</span> <span class="number">93</span>, <span class="operator">in</span> get_email_content</span><br><span class="line">    <span class="constant">return</span> content % stat</span><br><span class="line">    ValueError: unsupported <span class="built_in">format</span> <span class="keyword">character</span> <span class="string">';'</span> (<span class="number">0x3b</span>) <span class="keyword">at</span> index <span class="number">414</span></span><br></pre></td></tr></table></figure>
-<ul>
+<h3 id="解决方案">解决方案</h3><ul>
 <li>这是因为HTML代码中出现了<code>%</code>, 如<code>90%</code>这些参数在HTML中很常见，需要改成<code>90%%</code>, 这样就可以识别而不报错了</li>
 </ul>
 
