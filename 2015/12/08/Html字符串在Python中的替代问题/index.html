@@ -3,17 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: 山 | Keep It Simple, Stupid!</title>
+  <title>Html字符串在Python中的替代问题 | Keep It Simple, Stupid!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Top Gigger">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Keep It Simple, Stupid!">
-<meta property="og:url" content="http://www.bigg.top/tags/山/index.html">
+  <meta name="description" content="问题描述
+在Python中，有时需要替换HTML格式的字符串，由于%(name)s是替换字符串的，所以%被占用，有时会遇到以下问题
+
+File &quot;xxx_xxx_email.py&quot;, line 93, in get_email_content    return content % stat    ValueError: unsupported format character &apos;;&apos; (0x3b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Html字符串在Python中的替代问题">
+<meta property="og:url" content="http://www.bigg.top/2015/12/08/Html字符串在Python中的替代问题/index.html">
 <meta property="og:site_name" content="Keep It Simple, Stupid!">
-<meta property="og:description" content="Top Gigger">
+<meta property="og:description" content="问题描述
+在Python中，有时需要替换HTML格式的字符串，由于%(name)s是替换字符串的，所以%被占用，有时会遇到以下问题
+
+File &quot;xxx_xxx_email.py&quot;, line 93, in get_email_content    return content % stat    ValueError: unsupported format character &apos;;&apos; (0x3b">
+<meta property="og:updated_time" content="2015-12-08T01:41:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Keep It Simple, Stupid!">
-<meta name="twitter:description" content="Top Gigger">
+<meta name="twitter:title" content="Html字符串在Python中的替代问题">
+<meta name="twitter:description" content="问题描述
+在Python中，有时需要替换HTML格式的字符串，由于%(name)s是替换字符串的，所以%被占用，有时会遇到以下问题
+
+File &quot;xxx_xxx_email.py&quot;, line 93, in get_email_content    return content % stat    ValueError: unsupported format character &apos;;&apos; (0x3b">
   
     <link rel="alternative" href="/atom.xml" title="Keep It Simple, Stupid!" type="application/atom+xml">
   
@@ -209,57 +219,109 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Html字符串在Python中的替代问题" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2014" class="archive-year">2014</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2014/11/22/《远山》-严阵/" class="archive-article-date">
-  	<time datetime="2014-11-21T16:11:47.000Z" itemprop="datePublished">Nov 22</time>
+    <div class="article-meta">
+      <a href="/2015/12/08/Html字符串在Python中的替代问题/" class="article-date">
+  	<time datetime="2015-12-08T01:34:15.000Z" itemprop="datePublished">2015-12-08</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/11/22/《远山》-严阵/">《远山》--严阵</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Html字符串在Python中的替代问题
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/山/">山</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读后感/">读后感</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bug/">bug</a></li></ul>
 	</div>
 
-          
+        
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/随笔/">随笔</a>
+	<a class="article-category-link" href="/categories/笔记/">笔记</a>
 	</div>
 
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题描述">问题描述</h3><ul>
+<li>在Python中，有时需要替换HTML格式的字符串，由于%(name)s是替换字符串的，所以%被占用，有时会遇到以下问题</li>
+</ul>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">File <span class="string">"xxx_xxx_email.py"</span>, <span class="built_in">line</span> <span class="number">93</span>, <span class="operator">in</span> get_email_content</span><br><span class="line">    <span class="constant">return</span> content % stat</span><br><span class="line">    ValueError: unsupported <span class="built_in">format</span> <span class="keyword">character</span> <span class="string">';'</span> (<span class="number">0x3b</span>) <span class="keyword">at</span> index <span class="number">414</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>这是因为HTML代码中出现了<code>%</code>, 如<code>90%</code>这些参数在HTML中很常见，需要改成<code>90%%</code>, 这样就可以识别而不报错了</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/11/29/elasticsearch的python增删查改实例分析/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">elasticsearch的python增删查改实例分析</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'topbigg'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
 
 </div>
       <footer id="footer">
@@ -286,9 +348,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true
 	}
