@@ -3,17 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Django | Keep It Simple, Stupid!</title>
+  <title>Django安装和登陆MySQL问题 | Keep It Simple, Stupid!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Top Gigger">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Keep It Simple, Stupid!">
-<meta property="og:url" content="http://www.bigg.top/tags/Django/index.html">
+  <meta name="description" content="问题描述：mysql_config not found
+问题原因及解决方法：
+没有安装客户端，下载安装即可http://dev.mysql.com/downloads/mysql/
+修改venv的环境变量。编辑/bin/activate文件，并在它后面添加以下内容
+_OLD_VIRTUAL_PATH=&quot;$PATH&quot;     PATH=&quot;$VIRTUAL_ENV/bin:$PATH&quot;     PAT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django安装和登陆MySQL问题">
+<meta property="og:url" content="http://www.bigg.top/2016/01/08/Django安装MySQL问题/index.html">
 <meta property="og:site_name" content="Keep It Simple, Stupid!">
-<meta property="og:description" content="Top Gigger">
+<meta property="og:description" content="问题描述：mysql_config not found
+问题原因及解决方法：
+没有安装客户端，下载安装即可http://dev.mysql.com/downloads/mysql/
+修改venv的环境变量。编辑/bin/activate文件，并在它后面添加以下内容
+_OLD_VIRTUAL_PATH=&quot;$PATH&quot;     PATH=&quot;$VIRTUAL_ENV/bin:$PATH&quot;     PAT">
+<meta property="og:updated_time" content="2016-01-08T09:37:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Keep It Simple, Stupid!">
-<meta name="twitter:description" content="Top Gigger">
+<meta name="twitter:title" content="Django安装和登陆MySQL问题">
+<meta name="twitter:description" content="问题描述：mysql_config not found
+问题原因及解决方法：
+没有安装客户端，下载安装即可http://dev.mysql.com/downloads/mysql/
+修改venv的环境变量。编辑/bin/activate文件，并在它后面添加以下内容
+_OLD_VIRTUAL_PATH=&quot;$PATH&quot;     PATH=&quot;$VIRTUAL_ENV/bin:$PATH&quot;     PAT">
   
     <link rel="alternative" href="/atom.xml" title="Keep It Simple, Stupid!" type="application/atom+xml">
   
@@ -209,57 +222,119 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Django安装MySQL问题" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/01/08/Django安装MySQL问题/" class="archive-article-date">
-  	<time datetime="2016-01-08T09:36:10.000Z" itemprop="datePublished">Jan 8</time>
+    <div class="article-meta">
+      <a href="/2016/01/08/Django安装MySQL问题/" class="article-date">
+  	<time datetime="2016-01-08T09:36:10.000Z" itemprop="datePublished">2016-01-08</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/01/08/Django安装MySQL问题/">Django安装和登陆MySQL问题</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Django安装和登陆MySQL问题
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bug/">bug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
 	</div>
 
-          
+        
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/笔记/">笔记</a>
 	</div>
 
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题描述：">问题描述：</h3><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">mysql_config <span class="keyword">not</span> found</span><br></pre></td></tr></table></figure>
+<h4 id="问题原因及解决方法：">问题原因及解决方法：</h4><ul>
+<li>没有安装客户端，下载安装即可<br><code>http://dev.mysql.com/downloads/mysql/</code></li>
+<li><p>修改venv的环境变量。编辑<code>/bin/activate</code>文件，并在它后面添加以下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">_OLD_VIRTUAL_PATH=<span class="string">"<span class="variable">$PATH</span>"</span></span><br><span class="line"> </span><br><span class="line">    PATH=<span class="string">"<span class="variable">$VIRTUAL_ENV</span>/bin:<span class="variable">$PATH</span>"</span></span><br><span class="line"> </span><br><span class="line">    PATH=<span class="string">"<span class="variable">$PATH</span>:/usr/local/mysql/bin/"</span></span><br><span class="line"> </span><br><span class="line">    <span class="built_in">export</span> PATH</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>pip install MySQL-python</code></p>
+</li>
+</ul>
+<h3 id="问题描述">问题描述</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">Django中查询MySQL数据库</span><br></pre></td></tr></table></figure>
+<h4 id="解决方法">解决方法</h4><ul>
+<li>运行<code>python mange.py dbshell</code></li>
+<li>成功进入<code>MySQL shell</code></li>
+<li>执行MySQL操作</li>
+</ul>
+<h3 id="问题描述-1">问题描述</h3><figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line">MySQL的<span class="keyword">client</span>查询出来的中文显示乱码</span><br></pre></td></tr></table></figure>
+<h4 id="解决方法-1">解决方法</h4><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">&gt; <span class="keyword">set</span> names utf8;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/12/08/Html字符串在Python中的替代问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Html字符串在Python中的替代问题</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'topbigg'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
 
 </div>
       <footer id="footer">
@@ -286,9 +361,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true
 	}
