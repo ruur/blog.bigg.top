@@ -12,14 +12,14 @@
 _OLD_VIRTUAL_PATH=&quot;$PATH&quot;     PATH=&quot;$VIRTUAL_ENV/bin:$PATH&quot;     PAT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django安装和登陆MySQL问题">
-<meta property="og:url" content="http://www.bigg.top/2016/01/08/Django安装MySQL问题/index.html">
+<meta property="og:url" content="http://www.bigg.top/2016/03/15/Django安装MySQL问题/index.html">
 <meta property="og:site_name" content="Keep It Simple, Stupid!">
 <meta property="og:description" content="问题描述：mysql_config not found
 问题原因及解决方法：
 没有安装客户端，下载安装即可http://dev.mysql.com/downloads/mysql/
 修改venv的环境变量。编辑/bin/activate文件，并在它后面添加以下内容
 _OLD_VIRTUAL_PATH=&quot;$PATH&quot;     PATH=&quot;$VIRTUAL_ENV/bin:$PATH&quot;     PAT">
-<meta property="og:updated_time" content="2016-01-08T09:37:30.000Z">
+<meta property="og:updated_time" content="2016-03-15T06:30:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django安装和登陆MySQL问题">
 <meta name="twitter:description" content="问题描述：mysql_config not found
@@ -225,8 +225,8 @@ _OLD_VIRTUAL_PATH=&quot;$PATH&quot;     PATH=&quot;$VIRTUAL_ENV/bin:$PATH&quot; 
       <div class="body-wrap"><article id="post-Django安装MySQL问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/08/Django安装MySQL问题/" class="article-date">
-  	<time datetime="2016-01-08T09:36:10.000Z" itemprop="datePublished">2016-01-08</time>
+      <a href="/2016/03/15/Django安装MySQL问题/" class="article-date">
+  	<time datetime="2016-03-15T06:29:10.000Z" itemprop="datePublished">2016-03-15</time>
 </a>
     </div>
   
@@ -280,6 +280,8 @@ _OLD_VIRTUAL_PATH=&quot;$PATH&quot;     PATH=&quot;$VIRTUAL_ENV/bin:$PATH&quot; 
 </ul>
 <h3 id="问题描述-1">问题描述</h3><figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line">MySQL的<span class="keyword">client</span>查询出来的中文显示乱码</span><br></pre></td></tr></table></figure>
 <h4 id="解决方法-1">解决方法</h4><figure class="highlight actionscript"><table><tr><td class="code"><pre><span class="line">&gt; <span class="keyword">set</span> names utf8;</span><br></pre></td></tr></table></figure>
+<h3 id="问题描述-2">问题描述</h3><figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line">环境： MAC OS X <span class="number">10.11</span> (安装MySQLdb)</span><br><span class="line">问题： <span class="keyword">Library</span> <span class="keyword">not</span> loaded: libmysqlclient.<span class="number">18</span>.dylib</span><br><span class="line">建立软链接，出现： Operation <span class="keyword">not</span> permitted</span><br></pre></td></tr></table></figure>
+<h3 id="解决方法-2">解决方法</h3><figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line">在<span class="keyword">bash_profile或.zshrc添加一行环境变量：</span><br><span class="line"></span><span class="label">export</span> DYLD_LIBRARY_PATH=<span class="string">"/usr/local/mysql/lib"</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
